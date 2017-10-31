@@ -4,15 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="terrorist.product_scanner_project.MainActivity">
+    tools:context="terrorist.product_scanner_project.MainActivity"
+    android:padding="16dp">
+
+    <SurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/camera_view"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/code_info"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="16dp"
+        android:text="Nothing to read."
+        />
 
 </android.support.constraint.ConstraintLayout>
