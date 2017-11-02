@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int SCAN_BARCODE = 123 ;
     private TextView txt_scannumber;
     private Button btn_clickscan;
+	private TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
