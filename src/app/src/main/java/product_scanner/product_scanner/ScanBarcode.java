@@ -10,7 +10,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
@@ -24,8 +23,8 @@ public class ScanBarcode extends AppCompatActivity {
     private static final int CAMERA_PERMISSION_CODE = 1001;
     private BarcodeDetector barcodeDetector;
     private CameraSource cameraSource;
-    private SurfaceView cameraView;
-
+    private MyCameraView cameraView;
+    private DrawingView drawingView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -43,10 +42,11 @@ public class ScanBarcode extends AppCompatActivity {
 
         cameraSource = new CameraSource
                 .Builder(this, barcodeDetector)
-                .setRequestedPreviewSize(640, 480) // Here the size of camera
+                .setRequestedPreviewSize(1600, 1024) // Here the size of camera
                 .setAutoFocusEnabled(true)
+                .setFacing(CameraSource.CAMERA_FACING_BACK)
                 .build();
-
+        cameraView.setCameraSource(cameraSource);
         cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
@@ -95,6 +95,8 @@ public class ScanBarcode extends AppCompatActivity {
                 }
             }
         });
+
+        cameraView.setDrawingView(drawingView);
     }
 
     @Override
@@ -104,6 +106,7 @@ public class ScanBarcode extends AppCompatActivity {
 
     private void findView() {
         cameraView = findViewById(R.id.camera_view);
+        drawingView =  findViewById(R.id.drawing_view);
 
     }
 

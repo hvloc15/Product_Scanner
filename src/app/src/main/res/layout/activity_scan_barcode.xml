@@ -4,10 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ScanBarcode">
-    <SurfaceView
+    <product_scanner.product_scanner.MyCameraView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/camera_view"
         />
+    <product_scanner.product_scanner.DrawingView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawing_view"/>
 
 </RelativeLayout>
