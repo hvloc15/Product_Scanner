@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MyApp</string>
     <string name="scan_barcode">Scan Barcode</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="dont_have_account_join_with_us">Dont have account? Join with us.</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
 </resources>

@@ -6,13 +6,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,13 +26,14 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
 
-    EditText emailEditText, passwordEditText;
-    ProgressBar progressBar;
-    ImageButton passwordReveal;
-    boolean checkPassReveal = false;
+    private EditText emailEditText, passwordEditText;
+    private ProgressBar progressBar;
+    private ImageButton passwordReveal;
+    private boolean checkPassReveal = false;
 
     private FirebaseAuth mAuth;
-
+    private LinearLayout linearLayout;
+    private InputMethodManager imm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +55,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         passwordReveal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkPassReveal == false) {
-                    passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                if (!checkPassReveal) {
+                    passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     checkPassReveal = true;
                 } else {
-                    passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                    passwordEditText.setTransformationMethod(new PasswordTransformationMethod());
                     checkPassReveal = false;
                 }
+                passwordEditText.setSelection(passwordEditText.getText().length());
             }
         });
 
@@ -128,4 +132,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
+    private void hidekeyboard(View view) {
+
+        imm= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+    }
+
 }

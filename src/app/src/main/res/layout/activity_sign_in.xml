@@ -11,8 +11,12 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <ImageView
@@ -32,7 +36,7 @@
                 android:drawableLeft="@drawable/ic_person_white_24dp"
                 android:drawablePadding="12dp"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:padding="8dp"
@@ -58,7 +62,7 @@
                     android:drawableTint="@color/white"
                     android:ems="10"
                     android:drawablePadding="12dp"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@color/white"
@@ -69,7 +73,7 @@
                     android:src="@drawable/eye"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="-30dp"
+                    android:layout_marginStart="-30dp"
                     android:background="@null"
                     android:tint="@color/white"
                     />
@@ -100,7 +104,7 @@
                 android:background="@drawable/background_login"
                 android:clickable="true"
                 android:padding="15dp"
-                android:text="SIGN IN"
+                android:text="@string/sign_in"
                 android:textAllCaps="true"
                 android:textColor="#fff" />
 
@@ -111,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:text="Dont have account? Join with us."
+                android:text="@string/dont_have_account_join_with_us"
                 android:textAlignment="center"
                 android:textColor="#fff" />
 
@@ -121,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:clickable="true"
-                android:text="Forget password?"
+                android:text="@string/forget_password"
                 android:textAlignment="center"
                 android:textColor="#fff" />
 
