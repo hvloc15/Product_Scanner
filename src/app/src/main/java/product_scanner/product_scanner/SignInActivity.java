@@ -16,15 +16,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private FirebaseAuth mAuth;
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     private  EditText emailEditText, passwordEditText;
     private   ProgressBar progressBar;
     private  ImageButton passwordReveal;
@@ -36,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        mAuth = FirebaseAuth.getInstance();
+        MyFirebaseAuth.mAuth = FirebaseAuth.getInstance();
         findView();
         setOnClickItem();
         denyCopyPassword();
@@ -89,20 +87,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.textView_signUp:
+            case R.id.textView_signUp: {
                 startActivity(new Intent(this, SignUpActivity.class));
                 break;
-            case R.id.button_signIn:
-                InputMethodManager inputManager = (InputMethodManager) //close keyboard
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+            case R.id.button_signIn: {
                 userLogin();
                 break;
-            case R.id.textView_passwordReset:
+            }
+            case R.id.textView_passwordReset: {
                 startActivity(new Intent(this, ResetPasswordActivity.class));
                 break;
+            }
 
         }
     }
@@ -137,16 +133,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        MyFirebaseAuth.mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
-                if(task.isSuccessful()){
-                    //////NAVIGATE
-                    Toast.makeText(getApplicationContext(), "Login Success.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
+            changetoMainMenu();
             }
         });
     }
@@ -157,4 +148,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MyFirebaseAuth.mUser= MyFirebaseAuth.mAuth.getCurrentUser();
+        if(MyFirebaseAuth.mUser!=null){
+            changetoMainMenu();
+        }
+    }
+
+    private void changetoMainMenu() {
+        startActivity(new Intent(this, ResideMenu.class));
+    }
 }

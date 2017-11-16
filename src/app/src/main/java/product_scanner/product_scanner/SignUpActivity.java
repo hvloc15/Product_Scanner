@@ -1,7 +1,6 @@
 package product_scanner.product_scanner;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -40,15 +39,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_up);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         mAuth = FirebaseAuth.getInstance();
-        emailEditText = (EditText) findViewById(R.id.editText_email);
-        passwordEditText = (EditText) findViewById(R.id.editText_password);
-        progressBar = (ProgressBar)findViewById(R.id.progressbar);
-        progressBar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00B6D6"), android.graphics.PorterDuff.Mode.SRC_ATOP);
-
-        passwordReveal = (ImageButton)findViewById(R.id.imageButton_passwordReveal);
-        findViewById(R.id.button_signUp).setOnClickListener(this);
-        findViewById(R.id.textView_signIn).setOnClickListener(this);
-
+        findView();
 
         passwordEditText.setLongClickable(false); //deny copy password to clipboard
 
@@ -68,22 +59,35 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    private void findView() {
+        emailEditText = (EditText) findViewById(R.id.editText_email);
+        passwordEditText = (EditText) findViewById(R.id.editText_password);
+        progressBar = (ProgressBar)findViewById(R.id.progressbar);
+        progressBar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00B6D6"), android.graphics.PorterDuff.Mode.SRC_ATOP);
+        passwordReveal = (ImageButton)findViewById(R.id.imageButton_passwordReveal);
+        findViewById(R.id.button_signUp).setOnClickListener(this);
+        findViewById(R.id.textView_signIn).setOnClickListener(this);
+        linearLayout= (LinearLayout) findViewById(R.id.view);
+        linearLayout.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                hidekeyboard(view);
+            }
+        });
+    }
+
 
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.button_signUp:
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
+            case R.id.button_signUp: {
                 registerUser();
-                startActivity(new Intent(this, LoginActivity.class));
                 break;
-            case R.id.textView_signIn:
-                startActivity(new Intent(this, LoginActivity.class));
+            }
+            case R.id.textView_signIn: {
+                finish();
                 break;
+            }
         }
     }
 

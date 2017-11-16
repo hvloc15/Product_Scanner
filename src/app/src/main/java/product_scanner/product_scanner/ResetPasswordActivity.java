@@ -83,10 +83,10 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                         if(task.isSuccessful()){
                             //////NAVIGATE
                             Toast.makeText(getApplicationContext(), "An email has been sent to your email address", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(mContext, LoginActivity.class));
+                            startActivity(new Intent(mContext, SignInActivity.class));
                         } else {
                             Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(mContext, LoginActivity.class));
+                            startActivity(new Intent(mContext, SignInActivity.class));
                         }
                     }
                 });
