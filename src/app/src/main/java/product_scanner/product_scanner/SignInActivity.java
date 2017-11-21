@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import static product_scanner.product_scanner.MyFirebaseAuth.*;
+
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     private  EditText emailEditText, passwordEditText;
     private   ProgressBar progressBar;
@@ -34,7 +36,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        MyFirebaseAuth.mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         findView();
         setOnClickItem();
         denyCopyPassword();
@@ -133,7 +135,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         progressBar.setVisibility(View.VISIBLE);
 
-        MyFirebaseAuth.mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
@@ -151,8 +153,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onStart() {
         super.onStart();
-        MyFirebaseAuth.mUser= MyFirebaseAuth.mAuth.getCurrentUser();
-        if(MyFirebaseAuth.mUser!=null){
+        mUser= mAuth.getCurrentUser();
+        if(mUser!=null){
             changetoMainMenu();
         }
     }

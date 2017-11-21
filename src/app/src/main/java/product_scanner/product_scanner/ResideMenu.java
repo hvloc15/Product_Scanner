@@ -55,7 +55,6 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         // You can disable a direction by setting ->
         resideMenu.setSwipeDirectionDisable(com.special.ResideMenu.ResideMenu.DIRECTION_RIGHT);
 
-
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
