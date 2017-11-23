@@ -29,7 +29,7 @@ public class ScanBarcode extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan_barcode);
+        setContentView(R.layout.activity_main);
         findView();
         if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(ScanBarcode.this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
@@ -92,6 +92,8 @@ public class ScanBarcode extends AppCompatActivity {
                     returnIntent.putExtra("barcode",barcodes.valueAt(0).displayValue);
                     setResult(Activity.RESULT_OK,returnIntent);
                     finish();
+                    //testing adding product layout
+
                 }
             }
         });
