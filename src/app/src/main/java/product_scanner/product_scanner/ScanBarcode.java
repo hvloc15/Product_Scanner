@@ -92,6 +92,8 @@ public class ScanBarcode extends AppCompatActivity {
                     returnIntent.putExtra("barcode",barcodes.valueAt(0).displayValue);
                     setResult(Activity.RESULT_OK,returnIntent);
                     finish();
+                    //testing adding product layout
+
                 }
             }
         });
