@@ -39,9 +39,9 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         resideMenu.setScaleValue(0.6f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
-        itemProfile  = new ResideMenuItem(this, R.drawable.icon_profile,  "Profile");
-        itemScan  = new ResideMenuItem(this, R.drawable.icon_scan,  "Scan");
+        itemHome     = new ResideMenuItem(this, R.drawable.icon_home, R.string.home);
+        itemProfile  = new ResideMenuItem(this, R.drawable.icon_profile, R.string.profile);
+        itemScan  = new ResideMenuItem(this, R.drawable.icon_scan, R.string.scan);
 
         itemHome.setOnClickListener(this);
         itemProfile.setOnClickListener(this);
