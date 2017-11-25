@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyApp</string>
-    <string name="scan_barcode">Scannez un Code-barre</string>
+    <string name="scan_barcode">Scanner un Code-barre</string>
     <string name="forget_password">Mot de passe oublié?</string>
-    <string name="dont_have_account_join_with_us">Pas de compte? Rejoignez-nous.</string>
+    <string name="dont_have_account_join_with_us">Pas de compte? Inscrivez-vous.</string>
     <string name="sign_in">SE CONNECTER</string>
     <string name="password">Mot de passe</string>
     <string name="email">Email</string>
     <string name="reset_password">REINITIALISIER LE MOT DE PASSE</string>
     <string name="already_have_an_account">Vous avez un déjà un compte?</string>
-    <string name="join_us">NOUS REJOINDRE</string>
+    <string name="join_us">S\'INSCRIRE</string>
     <string name="home">Accueil</string>
-    <string name="scan">Scan</string>
+    <string name="scan">Scanner</string>
     <string name="profile">Profil</string>
     <string name="nothing_to_read">Rien à lire</string>
+    <string name="success">Succès</string>
+    <string name="get_permission">Veuillez donner la permission</string>
 </resources>
