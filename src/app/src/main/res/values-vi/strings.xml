@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="dont_have_account_join_with_us">Dont have account? Join with us.</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="reset_password">RESET PASSWORD</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="join_us">JOIN US</string>
+    <string name="home">Home</string>
+    <string name="scan">Scan</string>
+    <string name="profile">Profile</string>
+    <string name="nothing_to_read">Nothing to read</string>
+    <string name="success">Success</string>
+    <string name="get_permission">Please get permission</string>
+
+</resources>
