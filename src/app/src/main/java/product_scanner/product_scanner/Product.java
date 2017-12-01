@@ -10,15 +10,17 @@ public class Product {
     private String price;
     private String info;
     private String imageURL;
+    private String description;
 
     public  void Product()  {};
 
-    public void Product(String ID, String name, String price, String info, String imageURL){
+    public void Product(String ID, String name, String price, String info, String imageURL, String description){
         this.ID = ID;
         this.name = name;
         this.price = price;
         this.info = info;
         this.imageURL = imageURL;
+        this.description= description;
     }
 
     //GET

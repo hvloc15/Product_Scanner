@@ -17,6 +17,7 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     private ResideMenuItem itemHome;
     private ResideMenuItem itemProfile;
     private ResideMenuItem itemScan;
+    private ResideMenuItem itemSignout;
     private String result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +43,17 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
         itemProfile  = new ResideMenuItem(this, R.drawable.icon_profile,  "Profile");
         itemScan  = new ResideMenuItem(this, R.drawable.icon_scan,  "Scan");
+        itemSignout= new ResideMenuItem(this, R.drawable.icon_logout, "Log out");
 
         itemHome.setOnClickListener(this);
         itemProfile.setOnClickListener(this);
         itemScan.setOnClickListener(this);
-
+        itemSignout.setOnClickListener(this);
 
         resideMenu.addMenuItem(itemHome, com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemProfile, com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemScan, com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemSignout, com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
 
         // You can disable a direction by setting ->
         resideMenu.setSwipeDirectionDisable(com.special.ResideMenu.ResideMenu.DIRECTION_RIGHT);
@@ -84,6 +87,10 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
             changeFragment(R.id.main_reside_menu,new ProfileFragment());
         else if(view == itemScan){
             changeFragment(R.id.main_reside_menu,new ScanFragment());
+        }
+        else if(view == itemSignout){
+            MyFirebaseAuth.mAuth.signOut();
+            finish();
         }
 
         resideMenu.closeMenu();
