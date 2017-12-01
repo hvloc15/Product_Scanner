@@ -3,11 +3,12 @@ package product_scanner.product_scanner;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.storage.FirebaseStorage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,20 +18,23 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_clickscan;
 	private TextView test;
 
+	private MyFirebaseStorage myFirebaseStorage;    //FirebaseStorage
+
     //Product detail
-    ViewPager viewPager;
-    ScreenShootAdapter screenShootAdapter;
+//    ViewPager viewPager;
+//    ScreenShootAdapter screenShootAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myFirebaseStorage.mStorageRef = FirebaseStorage.getInstance().getReference();
         findView();
         setOnClick();
 
-        screenShootAdapter = new ScreenShootAdapter(this);
-        viewPager.setAdapter(screenShootAdapter);
+ //       screenShootAdapter = new ScreenShootAdapter(this);
+ //       viewPager.setAdapter(screenShootAdapter);
     }
 
     private void setOnClick() {
@@ -46,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private void findView() {
         txt_scannumber= findViewById(R.id.code_info);
         btn_clickscan=findViewById(R.id.btn_clickscan);
-        viewPager = (ViewPager)findViewById(R.id.screenshoot_slider);
+//        viewPager = (ViewPager)findViewById(R.id.screenshoot_slider);
     }
 
     @Override

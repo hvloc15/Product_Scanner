@@ -2,83 +2,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="product_scanner.product_scanner.ProductFragment">
-    <RelativeLayout
+    tools:context="product_scanner.product_scanner.ProductFragment"
+    android:background="@drawable/new_login_gradients">
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"
-        android:background="@drawable/new_login_gradients">
+        android:fillViewport="true"
+        android:scrollbars="none"
+        >
 
+        <!-- TODO: Update blank fragment layout -->
 
-        <TextView
-            android:id="@+id/textView_product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sport Boots"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:textColor="#fff"/>
-
-        <TextView
-            android:id="@+id/textView_product_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sport Boots"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textView_product_name"
-            android:layout_marginTop="5dp"
-            android:textStyle="normal"
-            android:textColor="#fff"/>
-
-        <TextView
-            android:id="@+id/textView_product_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView_product_type"
-            android:text="300$"
-            android:layout_alignParentEnd="true"
-            android:textStyle="normal"
-            android:textSize="20dp"
-            android:textColor="#fff"/>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/screenshoot_slider"
-            android:layout_width="360dp"
-            android:layout_height="360dp"
-            android:layout_marginTop="15dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView_product_type"
-            android:background="#3f3f3f">
-
-        </android.support.v4.view.ViewPager>
-
-        <Button
-            android:id="@+id/button_add_to_cart"
-            style="@style/Base.TextAppearance.AppCompat.Body1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/background_login"
-            android:clickable="true"
-            android:padding="15dp"
-            android:text="add to cart"
-            android:textAllCaps="true"
-            android:textColor="@color/white" />
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-    </RelativeLayout>
-    
-    <!-- TODO: Update blank fragment layout -->
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/relativeLayout">
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/screenshoot_slider"
+                        android:layout_width="360dp"
+                        android:layout_height="wrap_content"
+                        android:background="#3f3f3f"
+                        android:scaleType="centerCrop"
+                        android:layout_centerVertical="true">
+
+                    </android.support.v4.view.ViewPager>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#40000000">
+                        <TextView
+                            android:id="@+id/textView_product_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:text="Sport Boots"
+                            android:textColor="#fff"
+                            android:textSize="24dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginBottom="7dp"/>
+
+                        <TextView
+                            android:id="@+id/textView_product_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/textView_product_name"
+                            android:text="300$"
+                            android:textColor="#fff"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginBottom="7dp"
+                            android:layout_marginTop="0dp"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="2">
+
+                    <Button
+                        android:id="@+id/button_add_to_cart"
+                        style="@style/Base.TextAppearance.AppCompat.Body1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/button_add_to_cart"
+                        android:text="add to cart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:layout_weight="1"/>
+
+                    <Button
+                        android:id="@+id/button_scan"
+                        style="@style/Base.TextAppearance.AppCompat.Body1"
+                        android:background="@drawable/button_add_to_cart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="Scan"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>
