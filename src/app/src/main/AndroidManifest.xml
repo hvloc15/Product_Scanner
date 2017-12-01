@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <provider android:authorities="com.facebook.app.FacebookContentProvider1381474148627910"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
         <activity android:name=".SignInActivity">      <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
