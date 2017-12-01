@@ -14,7 +14,7 @@
         android:id="@+id/code_info"
         android:textSize="30sp"
         android:textColor="@color/black"
-        android:text="Nothing to read."
+        android:text="@string/nothing_to_read"
         />
     <Button
         android:id="@+id/btn_clickscan"
