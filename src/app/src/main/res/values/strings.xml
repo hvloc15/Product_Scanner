@@ -20,4 +20,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="skip">Skip</string>
 
+    <!-- For facebook share hash key : qnxLvS/aavdBLg48+YpJ3GxNqBE= -->
+    <string name="facebook_app_id">1381474148627910</string>
+
 </resources>

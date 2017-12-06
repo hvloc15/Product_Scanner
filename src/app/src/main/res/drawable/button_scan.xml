@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="false">
+        <shape android:shape="oval">
+            <solid android:color="#0896DA"/>
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <solid android:color="#0896DA"/>
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/scan"
+        android:bottom="10sp"
+        android:left="10sp"
+        android:right="10sp"
+        android:top="10sp"
+        />
+</layer-list>
