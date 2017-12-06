@@ -13,6 +13,15 @@
         android:textColor="@color/black"
         android:text="Nothing to read."
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:text="Product"
+        android:layout_below="@id/code_info"
+        />
     <Button
         android:id="@+id/btn_clickscan"
         android:layout_width="match_parent"

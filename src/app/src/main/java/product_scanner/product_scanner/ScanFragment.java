@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,8 @@ import android.widget.TextView;
 
 public class ScanFragment extends Fragment {
     private static final int SCAN_BARCODE = 123 ;
-    private TextView txt_scannumber;
+    private TextView txt_scannumber,txt_productname;
+
     private Button btn_clickscan;
     private Context mContext;
     @Override
@@ -42,14 +44,17 @@ public class ScanFragment extends Fragment {
     private void findView(View v) {
         txt_scannumber= v.findViewById(R.id.code_info);
         btn_clickscan=v.findViewById(R.id.btn_clickscan);
+        txt_productname=v.findViewById(R.id.name);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
             if(requestCode == SCAN_BARCODE){
                 if(resultCode== Activity.RESULT_OK){
-                    txt_scannumber.setText(data.getStringExtra("barcode"));
-
+                    String barcode=data.getStringExtra("barcode");
+                    txt_scannumber.setText(barcode);
+                   txt_productname.setText(MyFirebaseDatabase.listproduct.get(barcode).getName());
+                    Log.w("Loc test","added" + MyFirebaseDatabase.listproduct.get(barcode).getName());
                 }
             }
         }
