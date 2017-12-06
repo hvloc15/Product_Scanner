@@ -5,9 +5,9 @@
         android:centerColor="#002f38"
         android:startColor="#f6000f12"
         android:angle="90" />
-    <padding android:left="7dp"
-        android:top="7dp"
-        android:right="7dp"
-        android:bottom="7dp" />
+    <padding android:left="0dp"
+        android:top="0dp"
+        android:right="0dp"
+        android:bottom="0dp" />
 
 </shape>
