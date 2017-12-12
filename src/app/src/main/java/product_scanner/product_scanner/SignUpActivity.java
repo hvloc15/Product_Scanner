@@ -35,11 +35,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private InputMethodManager imm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         mAuth = FirebaseAuth.getInstance();
         findView();
+
 
         passwordEditText.setLongClickable(false); //deny copy password to clipboard
 
@@ -56,6 +58,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 passwordEditText.setSelection(passwordEditText.getText().length());
             }
         });
+
 
     }
 

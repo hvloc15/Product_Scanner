@@ -19,7 +19,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!-- For facebook share hash key : qnxLvS/aavdBLg48+YpJ3GxNqBE= -->
+    <!-- For facebook share hash key : L2wX3+g06G8h8Pz9sGUHvo5zwno= and qnxLvS/aavdBLg48+YpJ3GxNqBE= -->
     <string name="facebook_app_id">1381474148627910</string>
+    <string name="fb_login_protocol_scheme">fb1381474148627910</string>
 
 </resources>
