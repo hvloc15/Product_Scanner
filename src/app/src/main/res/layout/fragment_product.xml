@@ -49,7 +49,7 @@
                         android:background="#40000000">
 
                         <TextView
-                            android:id="@+id/textView_product_name"
+                            android:id="@+id/tx_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
@@ -62,11 +62,10 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/textView_product_price"
+                            android:id="@+id/tx_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignBaseline="@+id/textView_product_name"
-                            android:layout_alignBottom="@+id/textView_product_name"
+                            android:layout_alignBaseline="@+id/tx_name"
                             android:layout_alignParentEnd="true"
                             android:layout_marginRight="15sp"
                             android:layout_marginTop="7sp"
@@ -101,13 +100,13 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_marginTop="12sp"
-                            android:layout_alignParentStart="true">
+                          >
 
                             <TextView
                                 android:layout_width="44sp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0.5"
-                                android:layout_marginLeft="10sp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="10sp"
                                 android:text="Quantity:"
                                 android:textColor="#fff"
                                 android:textSize="20sp"
@@ -140,7 +139,7 @@
                             android:layout_marginTop="7sp"
                             android:layout_marginBottom="7sp"
                             android:background="@drawable/button_add_to_cart"
-                            android:text="add to cart"
+                            android:text="@string/add"
                             android:textAllCaps="true"
                             android:textColor="@color/white" />
 

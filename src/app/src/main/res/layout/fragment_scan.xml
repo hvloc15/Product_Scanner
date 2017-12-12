@@ -29,4 +29,5 @@
         android:layout_centerInParent="true"
         android:text="@string/scan_barcode"/>
 
+
 </RelativeLayout>

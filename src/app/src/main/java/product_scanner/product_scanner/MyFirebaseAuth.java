@@ -10,6 +10,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class MyFirebaseAuth {
     static public FirebaseAuth mAuth;
     static public FirebaseUser mUser;
+    static void init(){
+        mAuth=FirebaseAuth.getInstance();
+    }
     static boolean isLogging(){
 
         return (mAuth.getCurrentUser()!=null);
