@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,9 +34,6 @@ public class ScanFragment extends Fragment {
     private Button btn_clickscan;
     private Context mContext;
 
-    //
-    ViewPager viewPager;
-    ScreenShootAdapter screenShootAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,10 +54,6 @@ public class ScanFragment extends Fragment {
                 .build();
         shareButton.setShareContent(content);
 
-        //
-        screenShootAdapter = new ScreenShootAdapter(getContext());
-        viewPager.setAdapter(screenShootAdapter);
-
         return v;
 
     }
@@ -80,12 +72,6 @@ public class ScanFragment extends Fragment {
         txt_scannumber= v.findViewById(R.id.code_info);
         btn_clickscan=v.findViewById(R.id.btn_clickscan);
         shareButton=v.findViewById(R.id.fb_share_button);
-
-
-
-        btn_clickscan=v.findViewById(R.id.button_scan);
-        //
-        viewPager = v.findViewById(R.id.screenshoot_slider);
 
     }
 
