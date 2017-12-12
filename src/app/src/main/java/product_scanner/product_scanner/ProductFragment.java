@@ -1,5 +1,6 @@
 package product_scanner.product_scanner;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,12 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.CallbackManager;
+import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
+
 
 public class ProductFragment extends Fragment {
     private ScreenShootAdapter screenShootAdapter;
     private ViewPager viewPager;
     private TextView name,price;
     private Product product;
+    private ShareButton shareButton;
+    private CallbackManager callbackManager;
+    private ShareDialog shareDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_product, container, false);
@@ -24,7 +32,30 @@ public class ProductFragment extends Fragment {
         screenShootAdapter = new ScreenShootAdapter(getContext(),product.getUrl());
         viewPager.setAdapter(screenShootAdapter);
         setUpUI();
+
+
+
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               /*        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.nike_sample1);
+               SharePhoto photo = new SharePhoto.Builder()
+                        .setBitmap(screenShootAdapter.getImage())
+                        .build();
+                SharePhotoContent content = new SharePhotoContent.Builder()
+                        .addPhoto(photo)
+                        .build();
+                shareButton.setShareContent(content);*/
+
+            }
+        });
         return v;
+    }
+
+    private void setUpShare(final Bitmap img) {
+
+
+
     }
 
     private void setUpUI() {
@@ -35,6 +66,9 @@ public class ProductFragment extends Fragment {
         viewPager = v.findViewById(R.id.screenshoot_slider);
         name= v.findViewById(R.id.tx_name);
         price=v.findViewById(R.id.tx_price);
+        shareButton=v.findViewById(R.id.fb_share_button);
+     /*   callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(this);*/
     }
 
 }

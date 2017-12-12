@@ -13,11 +13,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.share.widget.ShareButton;
+
 /**
  * Created by Nguyen Khang on 11/1/2017.
  */
 
 public class ScanFragment extends Fragment {
+
+    private ShareButton shareButton;
+
     private static final int SCAN_BARCODE = 123 ;
     private TextView txt_scannumber,txt_productname;
 
@@ -34,10 +39,18 @@ public class ScanFragment extends Fragment {
         mContext= getActivity();
         findView(v);
         setOnClick();
+
+
+
+
+
         //
+
      /*   screenShootAdapter = new ScreenShootAdapter(getContext());
         viewPager.setAdapter(screenShootAdapter);*/
+
         return v;
+
     }
     private void setOnClick() {
         btn_clickscan.setOnClickListener(new View.OnClickListener() {
@@ -53,13 +66,16 @@ public class ScanFragment extends Fragment {
 
         txt_scannumber= v.findViewById(R.id.code_info);
         btn_clickscan=v.findViewById(R.id.btn_clickscan);
+
         txt_productname=v.findViewById(R.id.name);
        // viewPager = v.findViewById(R.id.screenshoot_slider);
+
 
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == SCAN_BARCODE) {
             if (resultCode == Activity.RESULT_OK) {
                 String barcode;
@@ -74,6 +90,7 @@ public class ScanFragment extends Fragment {
                   /*  txt_scannumber.setText(barcode);
                     txt_productname.setText(MyFirebaseDatabase.listproduct.get(barcode).getName());*/
                     ((ResideMenu) getActivity()).changeFragment(R.id.main_reside_menu, new ProductFragment());
+
                 }
             }
         }

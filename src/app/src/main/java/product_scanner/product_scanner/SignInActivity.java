@@ -18,6 +18,13 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -32,6 +39,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private  boolean checkPassReveal = false;
     public LinearLayout linearLayout;
     private InputMethodManager imm;
+    CallbackManager callbackManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +49,36 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         findView();
         setOnClickItem();
         denyCopyPassword();
-
+        facebook();
 
 
     }
 
+    private void facebook(){
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken != null) {
+            startActivity(new Intent(SignInActivity.this, ResideMenu.class));
+        }
+        callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        startActivity(new Intent(SignInActivity.this, ResideMenu.class));
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
+
+    }
     private void denyCopyPassword() {
         passwordEditText.setLongClickable(false); //deny copy password to clipboard
     }
@@ -78,6 +111,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 .setColorFilter(Color.parseColor("#00B6D6"), android.graphics.PorterDuff.Mode.SRC_ATOP);//set color for progressBar
         passwordReveal = findViewById(R.id.imageButton_passwordReveal);
         linearLayout= (LinearLayout) findViewById(R.id.view);
+        LoginButton loginButton = findViewById(R.id.login_button);
         linearLayout.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -168,4 +202,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private void changetoMainMenu() {
         startActivity(new Intent(this, ResideMenu.class));
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
 }

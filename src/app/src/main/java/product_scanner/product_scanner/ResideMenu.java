@@ -25,14 +25,20 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     private ResideMenuItem itemProfile;
     private ResideMenuItem itemScan;
     private ResideMenuItem itemSignout;
+
     private ResideMenuItem itemSignin;
     private ResideMenuItem itemAdd;
     private List<ResideMenuItem> menuItems_Anonymous, menuItems_User;
     protected String barcodeid="";
-    private boolean isOpen=true;
+    private boolean isOpen=false;
     private final static int MY_PERMISSIONS_REQUEST_CAMERA=1003;
     private boolean isInitDB;
     private final String STORE_KEY="Store dbstate";
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +80,8 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         }
 
     }
+
+
     private boolean getDBState(Bundle savedInstanceState) {
         if(savedInstanceState!=null){
             return savedInstanceState.getBoolean(STORE_KEY);
@@ -209,4 +217,12 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if(!isOpen)
+            resideMenu.openMenu(com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
+        else
+            super.onBackPressed();
+
+    }
 }
