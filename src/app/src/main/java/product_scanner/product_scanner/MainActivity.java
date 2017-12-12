@@ -2,16 +2,40 @@ package product_scanner.product_scanner;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+<<<<<<< HEAD
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+=======
 import com.google.firebase.storage.FirebaseStorage;
 
 public class MainActivity extends AppCompatActivity {
+>>>>>>> 1e1aaad483fb62d42938ceebbda738e251c78248
 
+public class MainActivity extends AppCompatActivity {
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
 
     private static final int SCAN_BARCODE = 123 ;
     private TextView txt_scannumber;
@@ -33,9 +57,34 @@ public class MainActivity extends AppCompatActivity {
         findView();
         setOnClick();
 
+<<<<<<< HEAD
+
+        screenShootAdapter = new ScreenShootAdapter(this);
+        viewPager.setAdapter(screenShootAdapter);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(this);
+
+
+
+=======
  //       screenShootAdapter = new ScreenShootAdapter(this);
  //       viewPager.setAdapter(screenShootAdapter);
+>>>>>>> 1e1aaad483fb62d42938ceebbda738e251c78248
     }
+    Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.eye);
+    SharePhoto photo = new SharePhoto.Builder()
+            .setBitmap(image)
+            .setCaption("Messi bucu")
+            .build();
+    SharePhotoContent content = new SharePhotoContent.Builder()
+            .addPhoto(photo)
+            .build();
+    ShareButton shareButton = findViewById(R.id.fb_share_button);
+
+
+
 
     private void setOnClick() {
         btn_clickscan.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +107,11 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == SCAN_BARCODE){
             if(resultCode== Activity.RESULT_OK){
                 txt_scannumber.setText  (data.getStringExtra("barcode"));
+                super.onActivityResult(requestCode, resultCode, data);
+                callbackManager.onActivityResult(requestCode, resultCode, data);
             }
         }
     }
+
+
 }

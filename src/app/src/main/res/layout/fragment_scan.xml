@@ -11,8 +11,16 @@
         android:id="@+id/code_info"
         android:textSize="30sp"
         android:textColor="@color/black"
-        android:text="Nothing to read."
+        android:text="@string/nothing_to_read"
         />
+    <com.facebook.share.widget.ShareButton
+        android:id="@+id/fb_share_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/code_info"
+        android:layout_margin="5dp"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:id="@+id/btn_clickscan"
         android:layout_width="match_parent"

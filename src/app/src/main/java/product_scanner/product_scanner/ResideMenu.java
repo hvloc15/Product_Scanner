@@ -19,6 +19,8 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     private ResideMenuItem itemScan;
     private ResideMenuItem itemSignout;
     private String result;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
