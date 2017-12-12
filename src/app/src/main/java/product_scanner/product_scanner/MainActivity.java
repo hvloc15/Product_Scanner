@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
@@ -17,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
@@ -27,6 +27,11 @@ import com.facebook.share.widget.ShareDialog;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+=======
+import com.google.firebase.storage.FirebaseStorage;
+
+public class MainActivity extends AppCompatActivity {
+>>>>>>> 1e1aaad483fb62d42938ceebbda738e251c78248
 
 public class MainActivity extends AppCompatActivity {
     CallbackManager callbackManager;
@@ -37,18 +42,22 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_clickscan;
 	private TextView test;
 
+	private MyFirebaseStorage myFirebaseStorage;    //FirebaseStorage
+
     //Product detail
-    ViewPager viewPager;
-    ScreenShootAdapter screenShootAdapter;
+//    ViewPager viewPager;
+//    ScreenShootAdapter screenShootAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myFirebaseStorage.mStorageRef = FirebaseStorage.getInstance().getReference();
         findView();
         setOnClick();
 
+<<<<<<< HEAD
 
         screenShootAdapter = new ScreenShootAdapter(this);
         viewPager.setAdapter(screenShootAdapter);
@@ -59,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+=======
+ //       screenShootAdapter = new ScreenShootAdapter(this);
+ //       viewPager.setAdapter(screenShootAdapter);
+>>>>>>> 1e1aaad483fb62d42938ceebbda738e251c78248
     }
     Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.eye);
     SharePhoto photo = new SharePhoto.Builder()
@@ -86,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     private void findView() {
         txt_scannumber= findViewById(R.id.code_info);
         btn_clickscan=findViewById(R.id.btn_clickscan);
-        viewPager = (ViewPager)findViewById(R.id.screenshoot_slider);
+//        viewPager = (ViewPager)findViewById(R.id.screenshoot_slider);
     }
 
     @Override
