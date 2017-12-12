@@ -1,5 +1,6 @@
 package product_scanner.product_scanner;
 
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 /**
@@ -7,5 +8,10 @@ import com.google.firebase.storage.StorageReference;
  */
 
 public class MyFirebaseStorage {
-    static public StorageReference mStorageRef;
+    static public FirebaseStorage storage ;
+    static public StorageReference storageRef;
+    static public void init(){
+        storage=FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+    }
 }
