@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -27,9 +28,9 @@ import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
-import static product_scanner.product_scanner.MyFirebaseAuth.*;
+import static product_scanner.product_scanner.MyFirebaseAuth.mAuth;
+import static product_scanner.product_scanner.MyFirebaseAuth.mUser;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     private  EditText emailEditText, passwordEditText;
@@ -44,7 +45,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        mAuth = FirebaseAuth.getInstance();
+
         findView();
         setOnClickItem();
         denyCopyPassword();
@@ -173,8 +174,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
-            changetoMainMenu();
+                if(!MyFirebaseAuth.isLogging())
+                    Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                else
+                    finish();
             }
+
         });
     }
     private void hidekeyboard(View view) {
@@ -187,9 +192,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onStart() {
         super.onStart();
-        mUser= mAuth.getCurrentUser();
+       mUser= mAuth.getCurrentUser();
         if(mUser!=null){
-            changetoMainMenu();
+            //changetoMainMenu();
+            finish();
         }
     }
 

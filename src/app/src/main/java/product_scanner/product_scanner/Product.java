@@ -1,71 +1,58 @@
 package product_scanner.product_scanner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by nguye on 11/18/2017.
  */
 
 public class Product {
-    private String ID;
-    private String name;
-    private String price;
-    private String info;
-    private String imageURL;
-    private String description;
 
-    public  void Product()  {};
+     String name;
+     String url;
+     HashMap<String, String> sources;
+     HashMap<String,String> reviews;
+        public Product(){
+        }
+    public Product( String name,String url,String place,String price) {
 
-    public void Product(String ID, String name, String price, String info, String imageURL, String description){
-        this.ID = ID;
         this.name = name;
-        this.price = price;
-        this.info = info;
-        this.imageURL = imageURL;
-        this.description= description;
-    }
+        this.url=url;
+        sources=new HashMap<>();
+        reviews=new HashMap<>();
+        sources.put(place,price);
 
-    //GET
-    public String getID() {
-        return ID;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPrice() {
-        return price;
+    public String getUrl() {
+        return url;
     }
 
-    public String getInfo() {
-        return info;
+    public HashMap<String, String> getSources() {
+        return sources;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public HashMap<String, String> getReviews() {
+
+        return reviews;
     }
 
-    //SET
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public Map<String,Object> toMap(){
+        HashMap<String, Object> result = new HashMap<>();
+
+        result.put("Name", name);
+        result.put("Url",url);
+        result.put("Review",reviews);
+        result.put("Source",sources);
+
+        return result;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
-
 
 
 }

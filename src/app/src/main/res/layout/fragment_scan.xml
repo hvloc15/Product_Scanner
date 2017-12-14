@@ -13,13 +13,16 @@
         android:textColor="@color/black"
         android:text="@string/nothing_to_read"
         />
-    <com.facebook.share.widget.ShareButton
-        android:id="@+id/fb_share_button"
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/name"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:text="Product"
         android:layout_below="@id/code_info"
-        android:layout_margin="5dp"
-        android:layout_centerHorizontal="true" />
+        />
 
     <Button
         android:id="@+id/btn_clickscan"
@@ -27,5 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/scan_barcode"/>
+
 
 </RelativeLayout>
