@@ -48,12 +48,13 @@
             android:authorities="com.facebook.app.FacebookContentProvider1381474148627910"
             android:exported="true" />
 
-
+        
 
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ScanBarcode" />
 
         <activity android:name=".ResideMenu"
+            android:configChanges="locale|orientation"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

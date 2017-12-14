@@ -57,9 +57,9 @@ public class ProductFragment extends Fragment {
             public void onClick(View view) {
                        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.nike_sample1);
                SharePhoto photo = new SharePhoto.Builder()
-                       .setBitmap(image)
+                       //.setBitmap(image)
                        .setCaption("Messi Bucu")
-                        //.setBitmap(screenShootAdapter.getImage())
+                       .setBitmap(screenShootAdapter.getImage())
                         .build();
                 SharePhotoContent content = new SharePhotoContent.Builder()
                         .addPhoto(photo)
