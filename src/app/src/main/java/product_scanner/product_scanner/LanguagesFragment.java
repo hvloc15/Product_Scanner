@@ -20,6 +20,9 @@ public class LanguagesFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private Button fr;
+    private Button tr;
+    private Button en;
+    private Button vi;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +34,24 @@ public class LanguagesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 setLocale("fr");
-
+            }
+        });
+        tr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setLocale("tr");
+            }
+        });
+        vi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setLocale("vi");
+            }
+        });
+        en.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setLocale("en");
             }
         });
 
@@ -64,7 +84,10 @@ public class LanguagesFragment extends Fragment {
     }
 
     private void findView(View v) {
+        tr=v.findViewById(R.id.turkish);
         fr=v.findViewById(R.id.français);
+        vi=v.findViewById(R.id.viet);
+        en=v.findViewById(R.id.english);
     }
 
     public void setLocale(String lang) {
