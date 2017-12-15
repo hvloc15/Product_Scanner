@@ -7,4 +7,7 @@
     <color name="white">#ffffff</color>
     <color name="blue1">#3F51B5</color>
     <color name="blue2">#303F9F</color>
+    <color name="button_pressed">#99ccff</color>
+    <color name="button_focused">#9966ff</color>
+    <color name="button_default">#00b6d6</color>
 </resources>
