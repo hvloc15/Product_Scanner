@@ -1,5 +1,6 @@
 package product_scanner.product_scanner;
 
+import com.facebook.AccessToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -14,7 +15,10 @@ public class MyFirebaseAuth {
         mAuth=FirebaseAuth.getInstance();
     }
     static boolean isLogging(){
-
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken != null) {
+            return (mAuth.getCurrentUser()!=null);
+        }
         return (mAuth.getCurrentUser()!=null);
     }
 }
