@@ -55,10 +55,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void facebook(){
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        /*AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken != null) {
             startActivity(new Intent(SignInActivity.this, ResideMenu.class));
-        }
+        }*/
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {

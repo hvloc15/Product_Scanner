@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="product_scanner.product_scanner.LanguagesFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textlanguage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Select a language" />
+    <Button
+        android:id="@+id/français"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Français"
+        android:layout_below="@id/textlanguage"/>
+    <Button
+        android:id="@+id/turkish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/français"
+        android:text="Türkçe" />
+
+    <Button
+        android:id="@+id/english"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/turkish"
+        android:text="English"/>
+    <Button
+        android:id="@+id/viet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/english"
+        android:text="tiếng Việt"/>
+
+
+
+</RelativeLayout>

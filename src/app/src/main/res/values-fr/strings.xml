@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyApp</string>
-    <string name="scan_barcode">Scanner un Code-barre</string>
+    <string name="scan_barcode">Scanner un code-barre</string>
     <string name="forget_password">Mot de passe oublié?</string>
     <string name="dont_have_account_join_with_us">Pas de compte? Inscrivez-vous.</string>
     <string name="sign_in">SE CONNECTER</string>
@@ -16,4 +16,31 @@
     <string name="nothing_to_read">Rien à lire</string>
     <string name="success">Succès</string>
     <string name="get_permission">Veuillez donner la permission</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="addproduct">Ajouter un produit</string>
+    <string name="facebook_app_id">1381474148627910</string>
+    <string name="tap_to_quick_insert_barcode">Cliquer-ici pour un ajout rapide de code-barre</string>
+    <string name="next">Suivant</string>
+    <string name="product_name">Nom du produit</string>
+    <string name="barcode_id">Code-barre ID</string>
+    <string name="place">Lieu</string>
+    <string name="price">Prix</string>
+    <string name="get_image_from_folder">Chercher une image existante</string>
+    <string name="add">Ajouter</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
+
+    <string-array name="place_array">
+        <item>Circle K</item>
+        <item>Family Mart</item>
+        <item>Ministop</item>
+    </string-array>
+
+    <!-- For facebook share hash key : L2wX3+g06G8h8Pz9sGUHvo5zwno= and qnxLvS/aavdBLg48+YpJ3GxNqBE= -->
+
+
+    <string name="fb_login_protocol_scheme">fb1381474148627910</string>
 </resources>
