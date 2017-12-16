@@ -48,11 +48,10 @@
 
 
 
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".MainActivity" />
+
         <activity android:name=".ScanBarcode" />
 
-        <activity android:name=".ResideMenu"
+        <activity android:name=".SignUpActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
