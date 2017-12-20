@@ -50,11 +50,16 @@
 
         
 
-        <activity android:name=".SignUpActivity" />
+
+
         <activity android:name=".ScanBarcode" />
+
+        <activity android:name=".SignUpActivity"/>
+
 
         <activity android:name=".ResideMenu"
             android:configChanges="locale|orientation"
+
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
