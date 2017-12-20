@@ -8,7 +8,9 @@
     <TextView
         android:id="@+id/textlanguage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="30dp"
         android:text="Select a language" />
     <Button
         android:id="@+id/français"

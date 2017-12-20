@@ -35,8 +35,7 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     private boolean isInitDB;
     private final String STORE_KEY="Store dbstate";
 
-
-
+    private ResideMenuItem itemLanguage;
 
 
     @Override
@@ -119,6 +118,8 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         itemSignout= addItem(R.drawable.icon_logout, getString(R.string.logout));
         itemSignin= addItem(R.drawable.icon_logout,getString(R.string.sign_in));
         itemAdd= addItem(R.drawable.icon_insert,getString(R.string.addproduct));
+        itemLanguage= addItem(R.drawable.icon_language, getString(R.string.language));
+
     }
 
     private List<ResideMenuItem> itemsforAnonymous() {
@@ -134,6 +135,7 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         result.add(itemAdd);
         result.add(itemProfile);
         result.add(itemSignout);
+        result.add(itemLanguage);
         return result;
     }
 
@@ -188,6 +190,9 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
              }
              else if(view == itemAdd){
                  changeFragment(R.id.main_reside_menu,new AddFragment());
+             }
+             else if(view== itemLanguage){
+                 changeFragment(R.id.main_reside_menu, new LanguagesFragment());
              }
 
              resideMenu.closeMenu();
