@@ -43,5 +43,6 @@
 
     <string name="fb_login_protocol_scheme">fb1381474148627910</string>
 
-    <string name="language">Dil seç</string>
+    <string name="language">Dil</string>
+    <string name="select_l">Dil seç</string>
 </resources>

@@ -42,6 +42,8 @@
     <string name="fb_login_protocol_scheme">fb1381474148627910</string>
 
     <string name="language">Language</string>
+    <string name="select_l">Select a language</string>
+    <string name="back">Back</string>
 
 
 </resources>
