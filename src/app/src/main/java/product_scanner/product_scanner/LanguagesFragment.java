@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,6 +74,12 @@ public class LanguagesFragment extends Fragment {
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
         Intent refresh = new Intent(getActivity(), ResideMenu.class);
+        getActivity().finish();
         startActivity(refresh);
+        /*Fragment fragment = new LanguagesFragment();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_reside_menu, fragment, "fragment")
+                .commit();*/
     }
 }
