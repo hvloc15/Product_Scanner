@@ -51,14 +51,16 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
         return list;
     }
 
-    public  boolean updateData(Product product,String barcode,String quantity,String place){
+    public  boolean updateData(Product product,String quantity,String place){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(COL0,barcode);
+        contentValues.put(COL0,product.getBarcodeid());
         contentValues.put(COL1,product.getName());
         contentValues.put(COL2,quantity);
-        contentValues.put(COL3,product.getSources().get(place));
-        int num=db.update(TABLE_NAME,contentValues,COL0+" = "+"'"+barcode+"'",null);
+        String price=product.getSources().get(place);
+        contentValues.put(COL3,price);
+
+        int num=db.update(TABLE_NAME,contentValues,COL0+" = "+"'"+product.getBarcodeid()+"'",null);
         if(num>0)
             return true;
         else

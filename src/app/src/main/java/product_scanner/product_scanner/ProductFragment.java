@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class ProductFragment extends Fragment {
     private Button add;
     private Product product;
     private ShareButton shareButton;
+    private LinearLayout linearLayout;
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
     @Override
@@ -62,16 +64,29 @@ public class ProductFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String q=quantity.getText().toString();
+                q=q.replaceFirst("^0+(?!$)","");
                 if(q.equals(""))
                     Toast.makeText(getContext(),"Please enter the quantity",Toast.LENGTH_SHORT).show();
                 else {
 
                     Boolean check=ResideMenu.addToCartDatabase.insertData(product, q, "Circle K");
-                    if(check)
-                        Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(getContext(),"Unsuccessful",Toast.LENGTH_SHORT).show();
+                    if(check) {
+                        Toast.makeText(getContext(), "Insert successfully", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        check=ResideMenu.addToCartDatabase.updateData(product,q,"Circle K");
+                        if(check)
+                            Toast.makeText(getContext(), "Update successfully", Toast.LENGTH_SHORT).show();
+                        else
+                        Toast.makeText(getContext(), "Unsuccessful", Toast.LENGTH_SHORT).show();
+                    }
                 }
+            }
+        });
+        linearLayout.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                ((ResideMenu)getActivity()).hidekeyboard(view);
             }
         });
     }
@@ -93,6 +108,7 @@ public class ProductFragment extends Fragment {
         shareButton=v.findViewById(R.id.fb_share_button);
         add=v.findViewById(R.id.button_add_to_cart);
         quantity=v.findViewById(R.id.editView_quantity);
+        linearLayout=v.findViewById(R.id.main_view_product);
      /*   callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(this);*/
     }

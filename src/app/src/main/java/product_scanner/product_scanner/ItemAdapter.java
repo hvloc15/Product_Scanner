@@ -1,6 +1,8 @@
 package product_scanner.product_scanner;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -57,10 +59,20 @@ public class ItemAdapter extends ArrayAdapter<ItemProduct>{
         viewHolder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                builder.setTitle(context.getString(R.string.do_you_want_to_delete))
+                       .setNegativeButton(R.string.no,null)
+                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                ResideMenu.addToCartDatabase.deleteData(list.get(position).getBarcode());
+                                list.remove(position);
+                                notifyDataSetChanged();
 
-                ResideMenu.addToCartDatabase.deleteData(list.get(position).getBarcode());
-                list.remove(position);
-                notifyDataSetChanged();
+                            }
+                        });
+                builder.show();
+
             }
 
         });
