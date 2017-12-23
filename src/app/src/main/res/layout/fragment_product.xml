@@ -105,9 +105,9 @@
                             <TextView
                                 android:layout_width="44sp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_weight="2"
                                 android:layout_marginStart="10sp"
-                                android:text="Quantity:"
+                                android:text="@string/quantity"
                                 android:textColor="#fff"
                                 android:textSize="20sp"
                                 android:textStyle="normal" />
@@ -116,7 +116,7 @@
                                 android:id="@+id/editView_quantity"
                                 android:layout_width="20sp"
                                 android:layout_height="38sp"
-                                android:layout_weight="0.5"
+                                android:layout_weight="1"
                                 android:layout_marginRight="7sp"
                                 android:layout_marginLeft="7sp"
                                 android:background="@drawable/border"

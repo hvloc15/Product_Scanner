@@ -96,7 +96,7 @@
     android:layout_width="100dp"
     android:layout_height="100dp"
     android:layout_centerHorizontal="true"
-    android:background="@drawable/product_icon"
+
 
     android:layout_marginTop="10dp"/>
 

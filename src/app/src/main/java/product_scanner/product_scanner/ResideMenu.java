@@ -25,9 +25,10 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     private ResideMenuItem itemProfile;
     private ResideMenuItem itemScan;
     private ResideMenuItem itemSignout;
-
+    private ResideMenuItem itemCart;
     private ResideMenuItem itemSignin;
     private ResideMenuItem itemAdd;
+    public  static AddToCartDatabase addToCartDatabase;
     private List<ResideMenuItem> menuItems_Anonymous, menuItems_User;
     protected String barcodeid="";
     private boolean isOpen=false;
@@ -53,11 +54,12 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         initAddtoCart_DB();
 
         if( savedInstanceState == null ) {
-        MyFirebaseAuth.init();
+          MyFirebaseAuth.init();
           MyFirebaseDatabase.initDb();
           MyFirebaseStorage.init();
           MyFirebaseDatabase.getData();
-            changeFragment(R.id.main_reside_menu, new ScanFragment());
+          changeFragment(R.id.main_reside_menu, new ScanFragment());
+
         }
         else
             isOpen=savedInstanceState.getBoolean("state");
@@ -69,8 +71,10 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     }
 
     private void initAddtoCart_DB() {
-         if(!isInitDB)
-        this.deleteDatabase(AddToCartDatabase.DATABASE_NAME);
+     /*    if(!isInitDB) {
+             this.deleteDatabase(AddToCartDatabase.DATABASE_NAME);
+         }*/
+         addToCartDatabase=new AddToCartDatabase(this);
     }
 
     private void askPermission() {
@@ -119,12 +123,14 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         itemSignout= addItem(R.drawable.icon_logout, getString(R.string.logout));
         itemSignin= addItem(R.drawable.icon_logout,getString(R.string.sign_in));
         itemAdd= addItem(R.drawable.icon_insert,getString(R.string.addproduct));
+        itemCart= addItem(R.drawable.icon_home,getString(R.string.cart));
     }
 
     private List<ResideMenuItem> itemsforAnonymous() {
         List<ResideMenuItem> result=new ArrayList<>();
         result.add(itemScan);
         result.add(itemSignin);
+        result.add(itemCart);
         return result;
     }
 
@@ -134,6 +140,7 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         result.add(itemAdd);
         result.add(itemProfile);
         result.add(itemSignout);
+        result.add(itemCart);
         return result;
     }
 
@@ -189,7 +196,9 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
              else if(view == itemAdd){
                  changeFragment(R.id.main_reside_menu,new AddFragment());
              }
-
+            else if(view ==itemCart){
+                 changeFragment(R.id.main_reside_menu,new ItemFragment());
+             }
              resideMenu.closeMenu();
          }
 

@@ -8,7 +8,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.share.widget.ShareButton;
@@ -19,6 +22,8 @@ public class ProductFragment extends Fragment {
     private ScreenShootAdapter screenShootAdapter;
     private ViewPager viewPager;
     private TextView name,price;
+    private EditText quantity;
+    private Button add;
     private Product product;
     private ShareButton shareButton;
     private CallbackManager callbackManager;
@@ -33,7 +38,7 @@ public class ProductFragment extends Fragment {
         viewPager.setAdapter(screenShootAdapter);
         setUpUI();
 
-
+        setOnClick();
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +57,25 @@ public class ProductFragment extends Fragment {
         return v;
     }
 
+    private void setOnClick() {
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String q=quantity.getText().toString();
+                if(q.equals(""))
+                    Toast.makeText(getContext(),"Please enter the quantity",Toast.LENGTH_SHORT).show();
+                else {
+
+                    Boolean check=ResideMenu.addToCartDatabase.insertData(product, q, "Circle K");
+                    if(check)
+                        Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getContext(),"Unsuccessful",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     private void setUpShare(final Bitmap img) {
 
 
@@ -67,6 +91,8 @@ public class ProductFragment extends Fragment {
         name= v.findViewById(R.id.tx_name);
         price=v.findViewById(R.id.tx_price);
         shareButton=v.findViewById(R.id.fb_share_button);
+        add=v.findViewById(R.id.button_add_to_cart);
+        quantity=v.findViewById(R.id.editView_quantity);
      /*   callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(this);*/
     }

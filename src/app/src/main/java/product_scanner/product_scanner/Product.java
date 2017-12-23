@@ -10,21 +10,29 @@ import java.util.Map;
 public class Product {
 
      String name;
+     String barcodeid;
      String url;
      HashMap<String, String> sources;
      HashMap<String,String> reviews;
         public Product(){
         }
-    public Product( String name,String url,String place,String price) {
+
+
+
+    public Product(String name, String barcodeid, String url, String place, String price) {
 
         this.name = name;
+        this.barcodeid=barcodeid;
+
         this.url=url;
         sources=new HashMap<>();
         reviews=new HashMap<>();
         sources.put(place,price);
 
     }
-
+    public String getBarcodeid() {
+        return barcodeid;
+    }
     public String getName() {
         return name;
     }

@@ -2,8 +2,11 @@ package product_scanner.product_scanner;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 /**
  * Created by Nguyen Khang on 12/12/2017.
@@ -26,7 +29,7 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table "+TABLE_NAME+" ( "+COL0+" TEXT PRIMARY KEY, "+COL1+" TEXT, "+ COL2+" TEXT, "+COL3+"TEXT)");
+        db.execSQL("create table "+TABLE_NAME+" ( "+COL0+" TEXT PRIMARY KEY, "+COL1+" TEXT, "+ COL2+" TEXT, "+COL3+" TEXT )");
     }
 
     @Override
@@ -34,7 +37,19 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         onCreate(db);
     }
-
+    public ArrayList<ItemProduct> getProductList(){
+        ArrayList<ItemProduct> list= new ArrayList<>();
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor c=db.rawQuery("select * from "+TABLE_NAME,null);
+        boolean check=c.moveToFirst();
+        while(check){
+            list.add(new ItemProduct(c.getString(0),c.getString(1),c.getString(3),c.getString(2)));
+            check=c.moveToNext();
+        }
+        if(!c.isClosed())
+            c.close();
+        return list;
+    }
 
     public  boolean updateData(Product product,String barcode,String quantity,String place){
         SQLiteDatabase db=this.getWritableDatabase();
@@ -50,13 +65,14 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
             return false;
     }
 
-    public boolean insertData(Product product,String barcode,String quantity,String place){
+    public boolean insertData(Product product,String quantity,String place){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(COL0,barcode);
+        contentValues.put(COL0,product.getBarcodeid());
         contentValues.put(COL1,product.getName());
         contentValues.put(COL2,quantity);
-        contentValues.put(COL3,product.getSources().get(place));
+        String price=product.getSources().get(place);
+        contentValues.put(COL3,price);
         long check=db.insert(TABLE_NAME,null,contentValues);
         return check!=-1;
     }

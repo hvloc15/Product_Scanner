@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyApp</string>
-    <string name="scan_barcode"></string>
-    <string name="forget_password"></string>
-    <string name="dont_have_account_join_with_us"></string>
-    <string name="sign_in"></string>
-    <string name="password"></string>
-    <string name="email"></string>
-    <string name="reset_password"></string>
-    <string name="already_have_an_account"></string>
-    <string name="join_us"></string>
-    <string name="home"></string>
-    <string name="scan"></string>
-    <string name="profile"></string>
-    <string name="nothing_to_read"></string>
-    <string name="success"></string>
-    <string name="get_permission"></string>
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="dont_have_account_join_with_us">Dont have account? Join with us.</string>
+    <string name="sign_in">Sign in</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="reset_password">RESET PASSWORD</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="join_us">JOIN US</string>
+    <string name="home">Home</string>
+    <string name="scan">Scan</string>
+    <string name="profile">Profile</string>
+    <string name="nothing_to_read">Nothing to read</string>
+    <string name="success">Success</string>
+    <string name="get_permission">Please get permission</string>
+    <string name="logout">Log out</string>
+    <string name="addproduct">Add product</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
+
+    <string-array name="place_array">
+        <item>Circle K</item>
+        <item>Family Mart</item>
+        <item>Ministop</item>
+    </string-array>
+
+    <!-- For facebook share hash key : L2wX3+g06G8h8Pz9sGUHvo5zwno= and qnxLvS/aavdBLg48+YpJ3GxNqBE= -->
+    <string name="facebook_app_id">1381474148627910</string>
+    <string name="tap_to_quick_insert_barcode">Tap to quick insert Barcode</string>
+    <string name="next">Next</string>
+    <string name="product_name">Product Name</string>
+    <string name="barcode_id">Barcode ID</string>
+    <string name="place">Place</string>
+    <string name="price">Price</string>
+    <string name="get_image_from_folder">Get image from folder</string>
+    <string name="add">Add</string>
+
+    <string name="fb_login_protocol_scheme">fb1381474148627910</string>
 
 </resources>

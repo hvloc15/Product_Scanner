@@ -36,7 +36,7 @@ public class MyFirebaseDatabase  {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
                 String key=barcode;
-                Product product=new Product(name,url,place,price);
+                Product product=new Product(name,barcode,url,place,price);
                       mutableData.child(key).setValue(product);
                 return Transaction.success(mutableData);
             }

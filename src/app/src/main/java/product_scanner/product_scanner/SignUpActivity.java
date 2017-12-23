@@ -38,6 +38,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         mAuth = FirebaseAuth.getInstance();
         findView();

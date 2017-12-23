@@ -112,6 +112,7 @@ public class AddFragment extends Fragment {
                         public void onFailure(@NonNull Exception exception) {
                             // Handle unsuccessful uploads
                             progressDialog.dismiss();
+                            Toast.makeText(getContext(),"Please Sign in",Toast.LENGTH_SHORT).show();
                         }
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -139,9 +140,10 @@ public class AddFragment extends Fragment {
         barcode=v.findViewById(R.id.input_id);
         spinner=v.findViewById(R.id.spinner_place);
         imageView=v.findViewById(R.id.image);
-       next=v.findViewById(R.id.btn_next);
-       pickimage=v.findViewById(R.id.btn_getImage);
-       img= BitmapFactory.decodeResource(getResources(),R.drawable.product_icon);
+         next=v.findViewById(R.id.btn_next);
+        pickimage=v.findViewById(R.id.btn_getImage);
+          img= BitmapFactory.decodeResource(getResources(),R.drawable.product_icon);
+          imageView.setImageBitmap(img);
     }
     private void setUpSpinner(){
         adapter = ArrayAdapter.createFromResource(getContext(),
@@ -170,7 +172,6 @@ public class AddFragment extends Fragment {
                         Toast.makeText(getContext(),"Please pick image from image folder",Toast.LENGTH_SHORT).show();
                     }
                     imageView.setImageBitmap(img);
-
 
 
                     break;
