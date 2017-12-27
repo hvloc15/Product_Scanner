@@ -52,6 +52,8 @@ public class ScanFragment extends Fragment {
             public void onClick(View view) {
                 Intent i= new Intent(getActivity(),ScanBarcode.class);
                 startActivityForResult(i,SCAN_BARCODE);
+                /*((ResideMenu) getActivity()).barcodeid = "8934588063053";
+                ((ResideMenu) getActivity()).changeFragment(R.id.main_reside_menu, new ProductFragment());*/
             }
         });
     }
