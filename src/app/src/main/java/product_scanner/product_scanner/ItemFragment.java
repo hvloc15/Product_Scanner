@@ -29,9 +29,15 @@ public class ItemFragment extends Fragment {
         itemlist = ResideMenu.addToCartDatabase.getProductList();
         findView(v);
 
-        total.setText(getTotal(itemlist));
 
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        total.setText(getTotal(itemlist));
+
     }
 
     private String getTotal(ArrayList<ItemProduct> list) {

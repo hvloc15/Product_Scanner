@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +28,6 @@ public class ScanFragment extends Fragment {
     private Button btn_clickscan;
     private Context mContext;
 
-    //
-    ViewPager viewPager;
-    ScreenShootAdapter screenShootAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,8 +35,6 @@ public class ScanFragment extends Fragment {
         mContext= getActivity();
         findView(v);
         setOnClick();
-
-
 
 
 
@@ -67,8 +61,10 @@ public class ScanFragment extends Fragment {
         txt_scannumber= v.findViewById(R.id.code_info);
         btn_clickscan=v.findViewById(R.id.btn_clickscan);
 
+
         txt_productname=v.findViewById(R.id.name);
        // viewPager = v.findViewById(R.id.screenshoot_slider);
+
 
 
     }

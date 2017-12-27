@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -55,10 +54,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void facebook(){
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        /*AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken != null) {
             startActivity(new Intent(SignInActivity.this, ResideMenu.class));
-        }
+        }*/
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {

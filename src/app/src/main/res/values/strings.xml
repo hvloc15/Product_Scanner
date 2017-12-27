@@ -5,6 +5,7 @@
     <string name="dont_have_account_join_with_us">Dont have account? Join with us.</string>
     <string name="sign_in">Sign in</string>
     <string name="password">Password</string>
+    <string name="re_password">Confirm password</string>
     <string name="email">Email</string>
     <string name="reset_password">RESET PASSWORD</string>
     <string name="already_have_an_account">Already have an account?</string>
@@ -48,5 +49,21 @@
     <string name="total">Total:</string>
     <string name="your_cart">Your cart</string>
 
+    <string name="language">Language</string>
+    <string name="select_l">Select a language</string>
+    <string name="back">Back</string>
+
+    //Profile
+    <string name="defaultName">Unknow</string>
+    <string name="defaultType">User</string>
+    <string name="submit">Submit</string>
+
+
+
+    //Spinner
+    <string-array name="names">
+        <item>Edit profile</item>
+        <item>Change picture</item>
+    </string-array>
 
 </resources>

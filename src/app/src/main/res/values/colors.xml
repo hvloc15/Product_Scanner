@@ -9,4 +9,8 @@
     <color name="blue2">#303F9F</color>
     <color name="silver3">#EAEDED</color>
     <color name="ssilver">#f2f2f2</color>
+    <color name="button_pressed">#99ccff</color>
+    <color name="button_focused">#9966ff</color>
+    <color name="button_default">#00b6d6</color>
+
 </resources>

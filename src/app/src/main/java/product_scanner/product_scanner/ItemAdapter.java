@@ -68,6 +68,7 @@ public class ItemAdapter extends ArrayAdapter<ItemProduct>{
                                 ResideMenu.addToCartDatabase.deleteData(list.get(position).getBarcode());
                                 list.remove(position);
                                 notifyDataSetChanged();
+                                Resume.resumeActivity(context);
 
                             }
                         });

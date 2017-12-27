@@ -1,6 +1,7 @@
 package product_scanner.product_scanner;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,10 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareButton;
 import com.facebook.share.widget.ShareDialog;
 
@@ -27,7 +31,11 @@ public class ProductFragment extends Fragment {
     private Button add;
     private Product product;
     private ShareButton shareButton;
+
     private LinearLayout linearLayout;
+
+    private Button shareB;
+
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
     @Override
@@ -40,19 +48,26 @@ public class ProductFragment extends Fragment {
         viewPager.setAdapter(screenShootAdapter);
         setUpUI();
 
+
         setOnClick();
 
-        shareButton.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        shareB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /*        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.nike_sample1);
+                       Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.nike_sample1);
                SharePhoto photo = new SharePhoto.Builder()
-                        .setBitmap(screenShootAdapter.getImage())
+                       //.setBitmap(image)
+                       .setCaption("Messi Bucu")
+                       .setBitmap(screenShootAdapter.getImage())
                         .build();
                 SharePhotoContent content = new SharePhotoContent.Builder()
                         .addPhoto(photo)
                         .build();
-                shareButton.setShareContent(content);*/
+                ShareDialog.show(ProductFragment.this, content);
 
             }
         });
@@ -106,11 +121,14 @@ public class ProductFragment extends Fragment {
         name= v.findViewById(R.id.tx_name);
         price=v.findViewById(R.id.tx_price);
         shareButton=v.findViewById(R.id.fb_share_button);
+
         add=v.findViewById(R.id.button_add_to_cart);
         quantity=v.findViewById(R.id.editView_quantity);
         linearLayout=v.findViewById(R.id.main_view_product);
      /*   callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(this);*/
+        shareB=v.findViewById(R.id.fb_share);
+
     }
 
 }

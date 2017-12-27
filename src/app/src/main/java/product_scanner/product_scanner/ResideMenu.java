@@ -2,12 +2,17 @@ package product_scanner.product_scanner;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,6 +21,7 @@ import com.special.ResideMenu.ResideMenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ResideMenu extends AppCompatActivity implements View.OnClickListener {
     private com.special.ResideMenu.ResideMenu resideMenu;
@@ -32,42 +38,60 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     private List<ResideMenuItem> menuItems_Anonymous, menuItems_User;
     protected String barcodeid="";
     private boolean isOpen=false;
+
     private final static int MY_PERMISSIONS_REQUEST_CAMERA=1003;
     private boolean isInitDB;
     private final String STORE_KEY="Store dbstate";
-
-
-
-
+    public final static String LOCALE="locale";
+    public SharedPreferences sharedPreferences;
+    private ResideMenuItem itemLanguage;
+    private String locale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reside_menu);
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        setUpMenu();
-        addItemsforMenu();
-        menuItems_Anonymous= itemsforAnonymous();
-        menuItems_User= itemsforUser();
-        askPermission();
-        isInitDB=getDBState(savedInstanceState);
+        setUpResideMenu();
+        setUpMenuItems();
         initAddtoCart_DB();
 
         if( savedInstanceState == null ) {
+            askPermission();
           MyFirebaseAuth.init();
           MyFirebaseDatabase.initDb();
           MyFirebaseStorage.init();
           MyFirebaseDatabase.getData();
           changeFragment(R.id.main_reside_menu, new ScanFragment());
+        }
+        else {
+            isOpen = savedInstanceState.getBoolean("state");
 
         }
-        else
-            isOpen=savedInstanceState.getBoolean("state");
-
         if(isOpen) {
             resideMenu.openMenu(com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
-
         }
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+    }
+
+    private String getLocale() {
+       return sharedPreferences.getString(LOCALE,"en");
+    }
+
+    private void changetocurrentFragment(int item) {
+        if(item==0)
+            changeFragment(R.id.main_reside_menu, new ScanFragment());
+        else if(item==1)
+            changeFragment(R.id.main_reside_menu, new LanguagesFragment());
+        else if(item==2)
+            changeFragment(R.id.main_reside_menu, new ItemFragment());
     }
 
     private void initAddtoCart_DB() {
@@ -92,22 +116,39 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         }
         return false;
     }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         outState.putBoolean("state",isOpen);
         outState.putBoolean(STORE_KEY,true);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(MyFirebaseAuth.isLogging()){
+            resideMenu.setMenuItems(menuItems_User, com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
+        }
+        else
+            resideMenu.setMenuItems(menuItems_Anonymous, com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
+    }
+
+    public void setUpMenuItems() {
+        locale=getLocale();
+        setLocale(locale);
+        addItemsforMenu();
+        menuItems_Anonymous= itemsforAnonymous();
+        menuItems_User= itemsforUser();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        if(MyFirebaseAuth.isLogging()){
-            resideMenu.setMenuItems(menuItems_User, com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
-        }
-        else
-            resideMenu.setMenuItems(menuItems_Anonymous, com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
+
+
     }
 
 
@@ -124,6 +165,10 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         itemSignin= addItem(R.drawable.icon_logout,getString(R.string.sign_in));
         itemAdd= addItem(R.drawable.icon_insert,getString(R.string.addproduct));
         itemCart= addItem(R.drawable.icon_home,getString(R.string.cart));
+
+        itemLanguage= addItem(R.drawable.icon_language, getString(R.string.language));
+
+
     }
 
     private List<ResideMenuItem> itemsforAnonymous() {
@@ -139,12 +184,13 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         result.add(itemScan);
         result.add(itemAdd);
         result.add(itemProfile);
-        result.add(itemSignout);
         result.add(itemCart);
+        result.add(itemLanguage);
+        result.add(itemSignout);
         return result;
     }
 
-    private void setUpMenu() {
+    private void setUpResideMenu() {
 
         // attach to current activity;
         resideMenu = new com.special.ResideMenu.ResideMenu(this);
@@ -187,29 +233,36 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         else{
              if (view == itemHome){
                  changeFragment(R.id.main_reside_menu,new HomeFragment());
+
              }
              else if(view == itemProfile)
                  changeFragment(R.id.main_reside_menu,new ProfileFragment());
              else if(view == itemScan){
+
                  changeFragment(R.id.main_reside_menu,new ScanFragment());
+
              }
              else if(view == itemAdd){
                  changeFragment(R.id.main_reside_menu,new AddFragment());
              }
             else if(view ==itemCart){
+
                  changeFragment(R.id.main_reside_menu,new ItemFragment());
+
              }
+
+             else if(view== itemLanguage){
+
+                 changeFragment(R.id.main_reside_menu, new LanguagesFragment());
+             }
+
+
              resideMenu.closeMenu();
          }
 
 
     }
 
-    private void restartActivity() {
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
-    }
 
     public void changeFragment(int fragment,Fragment targetFragment){
         resideMenu.clearIgnoredViewList();
@@ -233,5 +286,13 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         else
             super.onBackPressed();
 
+    }
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }

@@ -25,10 +25,10 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText emailEditText, passwordEditText;
+    private EditText emailEditText, passwordEditText, rePasswordEdidText;
     private ProgressBar progressBar;
-    private ImageButton passwordReveal;
-    private boolean checkPassReveal = false;
+    private ImageButton passwordReveal, passwordReveal2;
+    private boolean checkPassReveal = false, checkPassReveal2 = false;
 
     private FirebaseAuth mAuth;
     private LinearLayout linearLayout;
@@ -45,6 +45,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
         passwordEditText.setLongClickable(false); //deny copy password to clipboard
+        rePasswordEdidText.setLongClickable(false);
 
         passwordReveal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,15 +61,31 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+        passwordReveal2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!checkPassReveal2) {
+                    rePasswordEdidText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    checkPassReveal2 = true;
+                } else {
+                    rePasswordEdidText.setTransformationMethod(new PasswordTransformationMethod());
+                    checkPassReveal2 = false;
+                }
+                rePasswordEdidText.setSelection(rePasswordEdidText.getText().length());
+            }
+        });
+
 
     }
 
     private void findView() {
         emailEditText = (EditText) findViewById(R.id.editText_email);
         passwordEditText = (EditText) findViewById(R.id.editText_password);
+        rePasswordEdidText = (EditText) findViewById(R.id.editText_re_password);
         progressBar = (ProgressBar)findViewById(R.id.progressbar);
         progressBar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00B6D6"), android.graphics.PorterDuff.Mode.SRC_ATOP);
         passwordReveal = (ImageButton)findViewById(R.id.imageButton_passwordReveal);
+        passwordReveal2 = (ImageButton)findViewById(R.id.imageButton_passwordReveal2);
         findViewById(R.id.button_signUp).setOnClickListener(this);
         findViewById(R.id.textView_signIn).setOnClickListener(this);
         linearLayout= (LinearLayout) findViewById(R.id.view);
@@ -98,6 +115,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private void registerUser() {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
+        String repassword = rePasswordEdidText.getText().toString();
 
         if(email.isEmpty()){
             emailEditText.setError("Email is required.");
@@ -122,6 +140,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
+        if(!repassword.equals(password)){
+            rePasswordEdidText.setError("Confirm password is wrong.");
+            rePasswordEdidText.requestFocus();
+            return;
+        }
+
+
         progressBar.setVisibility(View.VISIBLE);
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -133,6 +158,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 } else {
                     if(task.getException() instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(getApplicationContext(), "This email is already registered.", Toast.LENGTH_SHORT).show();
+
                     } else {
                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
