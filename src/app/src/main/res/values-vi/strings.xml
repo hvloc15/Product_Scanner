@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyApp</string>
-
     <string name="scan_barcode">Quét mã</string>
     <string name="forget_password">Quên mật khẩu</string>
     <string name="dont_have_account_join_with_us">Không có tài khoản ? Tham gia với chúng tôi</string>
@@ -10,6 +9,7 @@
     <string name="email">Email</string>
     <string name="reset_password">Đặt lại mật khẩu</string>
     <string name="already_have_an_account">Đã có tài khoản</string>
+
     <string name="join_us">Tham gia với chúng tôi</string>
     <string name="home">Trang chính</string>
     <string name="scan">Quét</string>
@@ -17,23 +17,9 @@
     <string name="nothing_to_read">Không có mã vạch</string>
     <string name="success">Thành công</string>
     <string name="get_permission">Cấp quyền truy cập</string>
-
     <string name="logout">Đăng xuất</string>
     <string name="addproduct">Thêm sản phẩm</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="skip">Skip</string>
-
-    <string-array name="place_array">
-        <item>Circle K</item>
-        <item>Family Mart</item>
-        <item>Ministop</item>
-    </string-array>
-
-    <!-- For facebook share hash key : L2wX3+g06G8h8Pz9sGUHvo5zwno= and qnxLvS/aavdBLg48+YpJ3GxNqBE= -->
     <string name="facebook_app_id">1381474148627910</string>
-
     <string name="tap_to_quick_insert_barcode">Nhấn để thêm nhanh mã vạch</string>
     <string name="next">Tiếp theo</string>
     <string name="product_name">Tên sản phẩm</string>
@@ -42,10 +28,43 @@
     <string name="price">Giá</string>
     <string name="get_image_from_folder">Lấy ảnh trong thư mục</string>
     <string name="add">Thêm</string>
-
+    <string-array name="place_array">
+        <item>Circle K</item>
+        <item>Family Mart</item>
+        <item>Ministop</item>
+    </string-array>
+    <!-- For facebook share hash key : L2wX3+g06G8h8Pz9sGUHvo5zwno= and qnxLvS/aavdBLg48+YpJ3GxNqBE= -->
     <string name="fb_login_protocol_scheme">fb1381474148627910</string>
     <string name="language">Ngôn ngữ</string>
     <string name="select_l">Chọn ngôn ngữ</string>
 
+
+    <string name="re_password">Confirm password</string>
+    <string name="skip">Skip</string>
+    <string name="do_you_want_to_delete">Do you want to delete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="product">Product</string>
+    <string name="quantity">Quantity</string>
+    <string name="total">Total:</string>
+    <string name="your_cart">Your cart</string>
+    <string name="back">Back</string>
+    <string name="upload">Uploading</string>
+    <string name="please_wait">Please wait</string>
+    <string name="please_fill_the_blank">Please fill in the blank</string>
+    <string name="please_sign_in">Please sign in</string>
+    <string name="please_choose_image_from_local_folder">Please choose the image from local folder</string>
+    <string name="please_turn_on_the_internet">Please turn on the internet</string>
+    <string name="please_enter_the_quantity">Please enter the quantity</string>
+    //Profile
+    <string name="defaultName">Unknow</string>
+    <string name="defaultType">User</string>
+    <string name="submit">Submit</string>
+    <string name="share">Share</string>
+    //Spinner
+    <string-array name="names">
+        <item>Edit profile</item>
+        <item>Change picture</item>
+    </string-array>
 
 </resources>

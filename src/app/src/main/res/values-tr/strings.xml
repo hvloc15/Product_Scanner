@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MyApp</string>
     <string name="scan_barcode">Barkod tara</string>
-    <string name="forget_password">Şifreni mi unuttun?</string>
-    <string name="dont_have_account_join_with_us">Hesabın yok mu? Kaydol.</string>
-    <string name="sign_in">GİRİŞ YAP</string>
+    <string name="forget_password">Şifrenizi mi unuttunuz?</string>
+    <string name="dont_have_account_join_with_us">Hesabınız yok mu? Kaydolun.</string>
+    <string name="sign_in">GİRİŞ YAPIN</string>
     <string name="password">Şifre</string>
+    <string name="re_password">Şifreyi onaylayın</string>
     <string name="email">E-posta</string>
-    <string name="reset_password">ŞİFRENİ YENİLE</string>
+    <string name="reset_password">ŞİFRENİZİ YENİLEYİN</string>
     <string name="already_have_an_account">Hesabın var mı?</string>
+
     <string name="join_us">KAYDOL</string>
     <string name="home">Ana sayfa</string>
     <string name="scan">Tarama</string>
@@ -19,7 +21,9 @@
     <string name="logout">Çıkış yap</string>
     <string name="addproduct">Ürün ekle</string>
     <string name="facebook_app_id">1381474148627910</string>
-    <string name="tap_to_quick_insert_barcode">Barkod eklemek için tikla</string>
+    <string name="tap_to_quick_insert_barcode">Barkod eklemek için tiklayın</string>
+    <string name="cart">Sepet</string>
+    <string name="skip">Geç</string>
     <string name="next">Sonraki</string>
     <string name="product_name">Ürün adı</string>
     <string name="barcode_id">Barkod ID</string>
@@ -27,26 +31,39 @@
     <string name="price">Fiyat</string>
     <string name="get_image_from_folder">Resmi telefondan ekle</string>
     <string name="add">Ekle</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="skip">Skip</string>
-
-
     <string-array name="place_array">
         <item>Circle K</item>
         <item>Family Mart</item>
         <item>Ministop</item>
     </string-array>
-
-
     <!-- For facebook share hash key : L2wX3+g06G8h8Pz9sGUHvo5zwno= and qnxLvS/aavdBLg48+YpJ3GxNqBE= -->
-
-
+    <string name="do_you_want_to_delete">Silmek istiyor musunuz?</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
     <string name="fb_login_protocol_scheme">fb1381474148627910</string>
-
+    <string name="product">Ürün</string>
     <string name="language">Dil</string>
     <string name="select_l">Dil seç</string>
+    <string name="quantity">Miktar</string>
+    <string name="total">Toplam:</string>
+    <string name="your_cart">Sepetiniz</string>
+    <string name="back">Geri</string>
+    <string name="upload">Yükleniyor</string>
+    <string name="please_wait">Lütfen bekleyin</string>
+    <string name="please_fill_the_blank">Lütfen boşluğu doldurun</string>
+    <string name="please_sign_in">Lütfen giriş yapın</string>
+    <string name="please_choose_image_from_local_folder">Lütfen resmi telefondan seçin</string>
+    <string name="please_turn_on_the_internet">Lütfen interneti açın</string>
+    <string name="please_enter_the_quantity">Lütfen miktarı doldurun</string>
+    //Profile
+    <string name="defaultName">Bilinmeyen</string>
+    <string name="defaultType">Kullanıcı</string>
+    <string name="submit">Gönder</string>
+    <string name="share">Paylaş</string>
+    //Spinner
+    <string-array name="names">
+        <item>Profili düzenle</item>
+        <item>Resmi değiştir</item>
+    </string-array>
 
 </resources>
