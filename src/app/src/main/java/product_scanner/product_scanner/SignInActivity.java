@@ -153,24 +153,24 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         String password = passwordEditText.getText().toString();
 
         if(email.isEmpty()){
-            emailEditText.setError("Email is required.");
+            emailEditText.setError(getString(R.string.email_is_required));
             emailEditText.requestFocus();
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            emailEditText.setError("Please enter a valid email.");
+            emailEditText.setError(getString(R.string.please_enter_a_valid_email));
             emailEditText.requestFocus();
             return;
         }
 
         if(password.isEmpty()){
-            passwordEditText.setError("Password is required.");
+            passwordEditText.setError(getString(R.string.password_required));
             passwordEditText.requestFocus();
             return;
         }
 
         if(password.length() < 8){
-            passwordEditText.setError("Password length must be at least 8.");
+            passwordEditText.setError(getString(R.string.password_length));
             passwordEditText.requestFocus();
             return;
         }

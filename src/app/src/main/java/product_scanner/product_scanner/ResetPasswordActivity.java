@@ -74,12 +74,12 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
         String email = emailEditText.getText().toString().trim();
 
         if(email.isEmpty()){
-            emailEditText.setError("Email is required.");
+            emailEditText.setError(getString(R.string.email_is_required));
             emailEditText.requestFocus();
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            emailEditText.setError("Please enter a valid email.");
+            emailEditText.setError(getString(R.string.please_enter_a_valid_email));
             emailEditText.requestFocus();
             return;
         }
@@ -93,7 +93,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                         progressBar.setVisibility(View.GONE);
                         if(task.isSuccessful()){
                             //////NAVIGATE
-                            Toast.makeText(getApplicationContext(), "An email has been sent to your email address", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.email_sent), Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();

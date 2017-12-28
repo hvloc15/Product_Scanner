@@ -40,6 +40,7 @@
 
 
     <string name="re_password">Confirm password</string>
+    <string name="cart">Cart</string>
     <string name="skip">Skip</string>
     <string name="do_you_want_to_delete">Do you want to delete?</string>
     <string name="yes">Yes</string>
@@ -66,5 +67,17 @@
         <item>Edit profile</item>
         <item>Change picture</item>
     </string-array>
+    <string name="please_choose_the_price">Please choose the price</string>
+    <string name="insert_successfully">Insert successfully</string>
+    <string name="unsuccessful">Unsuccessful</string>
+    <string name="update_sucessful">Update successful</string>
+    <string name="please_enter_a_valid_email">Please enter a valid email.</string>
+    <string name="email_is_required">Email is required.</string>
+    <string name="email_sent">An email has been sent to your email address</string>
+    <string name="password_required">Password is required.</string>
+    <string name="password_length">Password length must be at least 8.</string>
+    <string name="confirm_password_wrong">Confirm password is wrong.</string>
+    <string name="register_success">Register Success.</string>
+    <string name="email_already_registered">This email is already registered.</string>
 
 </resources>

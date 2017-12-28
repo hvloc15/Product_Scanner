@@ -89,13 +89,13 @@ public class ProductFragment extends Fragment {
                 else {
 
                     if(place.equals(""))
-                        Toast.makeText(getContext(),"Please choose the price",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),getString(R.string.please_choose_the_price),Toast.LENGTH_SHORT).show();
                     else {
                         Boolean check = ResideMenu.addToCartDatabase.insertData(product, q,place);
                         if (check)
-                            Toast.makeText(getContext(), "Insert successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.insert_successfully), Toast.LENGTH_SHORT).show();
                         else
-                                Toast.makeText(getContext(), "Unsuccessful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), getString(R.string.unsuccessful), Toast.LENGTH_SHORT).show();
 
                     }
                 }

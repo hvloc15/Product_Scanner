@@ -126,7 +126,7 @@ public class ProfileFragment extends Fragment {
 
 
                 buttonSubmit.setVisibility(View.GONE);
-                Toast.makeText(view.getContext(), "Update successfull", Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(),getString(R.string.update_sucessful), Toast.LENGTH_LONG).show();
             }
         });
     }

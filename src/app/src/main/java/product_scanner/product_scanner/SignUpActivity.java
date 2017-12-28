@@ -123,30 +123,30 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String repassword = rePasswordEdidText.getText().toString();
 
         if(email.isEmpty()){
-            emailEditText.setError("Email is required.");
+            emailEditText.setError(getString(R.string.email_is_required));
             emailEditText.requestFocus();
 
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            emailEditText.setError("Please enter a valid email.");
+            emailEditText.setError(getString(R.string.please_enter_a_valid_email));
             emailEditText.requestFocus();
             return;
         }
 
         if(password.isEmpty()){
-            passwordEditText.setError("Password is required.");
+            passwordEditText.setError(getString(R.string.password_required));
             passwordEditText.requestFocus();
             return;
         }
 
         if(password.length() < 8){
-            passwordEditText.setError("Password length must be at least 8.");
+            passwordEditText.setError(getString(R.string.password_length));
             passwordEditText.requestFocus();
             return;
         }
 
         if(!repassword.equals(password)){
-            rePasswordEdidText.setError("Confirm password is wrong.");
+            rePasswordEdidText.setError(getString(R.string.confirm_password_wrong));
             rePasswordEdidText.requestFocus();
             return;
         }
@@ -159,10 +159,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "Register Success.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.register_success), Toast.LENGTH_SHORT).show();
                 } else {
                     if(task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(getApplicationContext(), "This email is already registered.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.email_already_registered), Toast.LENGTH_SHORT).show();
 
                     } else {
                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
