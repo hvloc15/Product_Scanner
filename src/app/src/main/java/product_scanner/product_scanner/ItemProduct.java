@@ -5,14 +5,12 @@ package product_scanner.product_scanner;
  */
 
 public class ItemProduct {
-    private String barcode,name,price,quantity;
+    private String name,price,quantity;
 
-    public String getBarcode() {
-        return barcode;
-    }
 
-    public ItemProduct(String barcode, String name, String price, String quantity) {
-        this.barcode= barcode;
+
+    public ItemProduct( String name, String price, String quantity) {
+
         this.name = name;
         this.price = price;
         this.quantity = quantity;

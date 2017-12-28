@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="product_scanner.product_scanner.ProductFragment"
     android:background="#263C54"
     android:focusable="true">
@@ -48,7 +49,7 @@
 
                         </android.support.v4.view.ViewPager>
 
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="85sp"
                             android:layout_alignParentBottom="true"
@@ -56,31 +57,30 @@
 
                             <TextView
                                 android:id="@+id/tx_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:gravity="center_vertical"
                                 android:layout_marginStart="11dp"
-                                android:text="Sport Boots"
+                                android:text="Tập"
                                 android:textColor="#fff"
-                                android:textSize="26sp"
+                                android:textSize="20sp"
                                 android:textStyle="bold" />
 
                             <Button
                                 android:id="@+id/tx_price"
-                                android:layout_width="100dp"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="40dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
                                 android:scaleType="fitEnd"
+                                android:layout_marginEnd="20dp"
                                 android:background="@drawable/price_icon"
-                                android:layout_marginRight="15dp"
                                 android:textColor="#fff"
                                 android:textSize="18sp"
                                 android:textStyle="normal"
                                 />
 
-                        </RelativeLayout>
+                        </LinearLayout>
 
 
 
@@ -177,20 +177,15 @@
                             android:drawableStart="@drawable/fb_icon"
                             android:layout_width="120dp"
                             android:layout_height="40dp"
-                                               android:background="@drawable/fbbtn_background"
-                                               android:text="@string/share"
-                                               android:textColor="#FFFFFF"
-                                    android:id="@+id/fb_share"
-                                               android:layout_below="@id/code_info"
+                            android:background="@drawable/fbbtn_background"
+                            android:text="@string/share"
+                            android:textColor="#FFFFFF"
+                            android:id="@+id/fb_share"
+                            android:layout_below="@id/code_info"
                                       />
 
 
-
-
-
                     </RelativeLayout>
-
-
 
 
                 </RelativeLayout>
@@ -198,16 +193,55 @@
             </LinearLayout>
 
         </ScrollView>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_scan"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/fab_fb"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/orange"
+            android:tint="@color/white"
+            android:src="@drawable/barcode"
+            android:layout_marginBottom="15dp"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_fb"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/fab_edit"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/button_default"
+            android:tint="@color/white"
+            android:src="@drawable/facebook"
+            android:foregroundTint="@color/button_default"
+            android:layout_marginBottom="15dp"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_edit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/fab_main"
+            android:tint="@color/white"
+            android:backgroundTint="@color/lime"
+            android:foregroundTint="@color/lime"
+            android:src="@drawable/edit_icon"
+            android:layout_marginEnd="20dp"/>
 
-        <Button
-            android:id="@+id/button_scan"
-            style="@style/Base.TextAppearance.AppCompat.Body1"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_alignParentRight="true"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_main"
+            app:fabSize="normal"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_margin="15dp"
-            android:background="@drawable/button_scan" />
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/plus_icon"
+            android:tint="@color/white"
+            app:elevation="6dp"
+
+            android:layout_height="50dp"
+            android:layout_width="50dp"/>
 
 
     </RelativeLayout>

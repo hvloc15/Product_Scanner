@@ -46,13 +46,13 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     public SharedPreferences sharedPreferences;
     private ResideMenuItem itemLanguage;
     private String locale;
-
+    public CheckInternet internet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reside_menu);
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
+        internet=new CheckInternet(this);
         setUpResideMenu();
         setUpMenuItems();
         initAddtoCart_DB();
@@ -164,7 +164,7 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
         itemSignout= addItem(R.drawable.icon_logout, getString(R.string.logout));
         itemSignin= addItem(R.drawable.icon_logout,getString(R.string.sign_in));
         itemAdd= addItem(R.drawable.icon_insert,getString(R.string.addproduct));
-        itemCart= addItem(R.drawable.icon_home,getString(R.string.cart));
+        itemCart= addItem(R.drawable.icon_cart,getString(R.string.cart));
 
         itemLanguage= addItem(R.drawable.icon_language, getString(R.string.language));
 
@@ -174,19 +174,20 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     private List<ResideMenuItem> itemsforAnonymous() {
         List<ResideMenuItem> result=new ArrayList<>();
         result.add(itemScan);
-        result.add(itemSignin);
         result.add(itemCart);
+        result.add(itemLanguage);
+        result.add(itemSignin);
         return result;
     }
 
     private   List<ResideMenuItem> itemsforUser() {
         List<ResideMenuItem> result=new ArrayList<>();
         result.add(itemScan);
-        result.add(itemAdd);
-        result.add(itemProfile);
         result.add(itemCart);
         result.add(itemLanguage);
+        result.add(itemProfile);
         result.add(itemSignout);
+
         return result;
     }
 
@@ -231,11 +232,8 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
             startActivity(intent);
         }
         else{
-             if (view == itemHome){
-                 changeFragment(R.id.main_reside_menu,new HomeFragment());
 
-             }
-             else if(view == itemProfile)
+             if(view == itemProfile)
                  changeFragment(R.id.main_reside_menu,new ProfileFragment());
              else if(view == itemScan){
 

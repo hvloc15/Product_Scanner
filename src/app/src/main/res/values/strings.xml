@@ -52,13 +52,20 @@
     <string name="language">Language</string>
     <string name="select_l">Select a language</string>
     <string name="back">Back</string>
-
+    
+    <string name="upload">Uploading</string>
+    <string name="please_wait">Please wait</string>
+    <string name="please_fill_the_blank">Please fill in the blank</string>
+    <string name="please_sign_in">Please sign in</string>
+    <string name="please_choose_image_from_local_folder">Please cho the image from local folder </string>
+    <string name="please_turn_on_the_internet">Please turn on the internet</string>
+    <string name="please_enter_the_quantity">Please enter the quantity</string>
     //Profile
     <string name="defaultName">Unknow</string>
     <string name="defaultType">User</string>
     <string name="submit">Submit</string>
     <string name="share">Share</string>
-
+    
 
     //Spinner
     <string-array name="names">

@@ -40,10 +40,13 @@ public class PlaceAdapter extends ArrayAdapter<Place> {
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(this.resouce, null);
             viewHolder.place = (TextView) convertView.findViewById(R.id.place_name);
-            viewHolder.place.setText(getItem(position).getPlace());
             viewHolder.price = (TextView) convertView.findViewById(R.id.place_price);
-            viewHolder.price.setText(getItem(position).getPrice());
+            convertView.setTag(viewHolder);
         }
+        else
+            viewHolder= (ViewHolder) convertView.getTag();
+        viewHolder.price.setText(getItem(position).getPrice());
+        viewHolder.place.setText(getItem(position).getPlace());
         return convertView;
     }
 }

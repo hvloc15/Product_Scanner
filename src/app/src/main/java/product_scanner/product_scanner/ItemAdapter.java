@@ -65,7 +65,7 @@ public class ItemAdapter extends ArrayAdapter<ItemProduct>{
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                ResideMenu.addToCartDatabase.deleteData(list.get(position).getBarcode());
+                                ResideMenu.addToCartDatabase.deleteData(position);
                                 list.remove(position);
                                 notifyDataSetChanged();
                                 Resume.resumeActivity(context);

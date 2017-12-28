@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
@@ -29,8 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private ProgressBar progressBar;
     private ImageButton passwordReveal, passwordReveal2;
     private boolean checkPassReveal = false, checkPassReveal2 = false;
-
-    private FirebaseAuth mAuth;
+    private CheckInternet internet;
     private LinearLayout linearLayout;
     private InputMethodManager imm;
     @Override
@@ -40,10 +38,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_up);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        mAuth = FirebaseAuth.getInstance();
+
         findView();
+        setOnClick();
+        internet=new CheckInternet(this);
 
 
+
+    }
+
+    private void setOnClick() {
         passwordEditText.setLongClickable(false); //deny copy password to clipboard
         rePasswordEdidText.setLongClickable(false);
 
@@ -74,8 +78,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 rePasswordEdidText.setSelection(rePasswordEdidText.getText().length());
             }
         });
-
-
     }
 
     private void findView() {
@@ -102,7 +104,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.button_signUp: {
+                if(internet.isOnline())
                 registerUser();
+                else
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.please_turn_on_the_internet),Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.textView_signIn: {
@@ -149,7 +154,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        MyFirebaseAuth.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);

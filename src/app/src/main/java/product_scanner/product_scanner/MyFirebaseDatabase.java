@@ -19,16 +19,15 @@ import java.util.HashMap;
  */
 
 public class MyFirebaseDatabase  {
+
     public static DatabaseReference mDatabase;
     public static HashMap<String,Product> listproduct;
     public static void initDb(){
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Product").keepSynced(true);
         listproduct= new HashMap<>();
-    /*    Product product=new Product("Lavie Large","CircleK","600");
-        Map<String,Object> productmap=product.toMap();
-        Map<String,Object> map =new HashMap<>();
-        map.put("/Product/8935005801012/",productmap);
-        mDatabase.updateChildren(map);*/
+
 
     }
     public static void uploadData(final ProgressDialog progressDialog,final Context context, final String name, final String barcode, final String price, final String place, final String url){
@@ -43,7 +42,7 @@ public class MyFirebaseDatabase  {
 
             @Override
             public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-                Toast.makeText(context,"Successful",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,context.getResources().getString(R.string.success),Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         });

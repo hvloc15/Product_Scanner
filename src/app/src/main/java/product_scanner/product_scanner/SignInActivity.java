@@ -39,6 +39,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     public LinearLayout linearLayout;
     private InputMethodManager imm;
     CallbackManager callbackManager;
+    private CheckInternet internet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,16 +90,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         passwordReveal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!checkPassReveal) {
-                    passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 
-                    checkPassReveal = true;
-                } else {
-                    passwordEditText.setTransformationMethod(new PasswordTransformationMethod());
-                    checkPassReveal = false;
+                    if (!checkPassReveal) {
+                        passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                        checkPassReveal = true;
+                    } else {
+                        passwordEditText.setTransformationMethod(new PasswordTransformationMethod());
+                        checkPassReveal = false;
+                    }
+                    passwordEditText.setSelection(passwordEditText.getText().length());
                 }
-                passwordEditText.setSelection(passwordEditText.getText().length());
-            }
+
         });
     }
 
@@ -117,6 +120,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 hidekeyboard(view);
             }
         });
+
+        internet=new CheckInternet(this);
     }
 
 
@@ -128,7 +133,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case R.id.button_signIn: {
+                if(internet.isOnline())
                 userLogin();
+                else
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.please_turn_on_the_internet),Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.textView_passwordReset: {
@@ -198,9 +206,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void changetoMainMenu() {
-        startActivity(new Intent(this, ResideMenu.class));
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

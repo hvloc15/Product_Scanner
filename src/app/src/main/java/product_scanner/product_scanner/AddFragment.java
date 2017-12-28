@@ -101,30 +101,36 @@ public class AddFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(isFilled()) {
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    img.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                    byte[] data = baos.toByteArray();
-                    StorageReference ref = MyFirebaseStorage.storageRef.child(((ResideMenu) getActivity()).barcodeid + ".jpg");
-                    setUpProgressDialog("Uploading", "Please wait....");
-                    UploadTask uploadTask = ref.putBytes(data);
-                    uploadTask.addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle unsuccessful uploads
-                            progressDialog.dismiss();
-                            Toast.makeText(getContext(),"Please Sign in",Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                            MyFirebaseDatabase.uploadData(progressDialog, getContext(), name.getText().toString(), barcode.getText().toString(), price.getText().toString(), spinner.getSelectedItem().toString(), downloadUrl.toString());
-                        }
-                    });
+                    if (((ResideMenu) getActivity()).internet.isOnline()) {
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        img.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                        byte[] data = baos.toByteArray();
+                        StorageReference ref = MyFirebaseStorage.storageRef.child(((ResideMenu) getActivity()).barcodeid + ".jpg");
+                        setUpProgressDialog(getResources().getString(R.string.upload), getResources().getString(R.string.please_wait) + "...");
+                        UploadTask uploadTask = ref.putBytes(data);
+                        uploadTask.addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle unsuccessful uploads
+                                progressDialog.dismiss();
+                                Toast.makeText(getContext(), getResources().getString(R.string.please_sign_in), Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                                MyFirebaseDatabase.uploadData(progressDialog, getContext(), name.getText().toString(), barcode.getText().toString(), price.getText().toString(), spinner.getSelectedItem().toString(), downloadUrl.toString());
+                            }
+                        });
+                    }
+                    else
+                        Toast.makeText(getContext(),getResources().getString(R.string.please_turn_on_the_internet),Toast.LENGTH_SHORT).show();
+
+
                 }
                 else{
-                    Toast.makeText(getContext(),"Please fill the blank",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),getResources().getString(R.string.please_fill_the_blank),Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -169,7 +175,7 @@ public class AddFragment extends Fragment {
                         img = decodeUri(selectedImage);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
-                        Toast.makeText(getContext(),"Please pick image from image folder",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),getResources().getString(R.string.please_choose_image_from_local_folder),Toast.LENGTH_SHORT).show();
                     }
                     imageView.setImageBitmap(img);
 

@@ -15,7 +15,8 @@ import java.util.ArrayList;
 public class AddToCartDatabase extends SQLiteOpenHelper {
     final static String DATABASE_NAME="Cart.db";
     final static String TABLE_NAME="product_table";
-    final static String COL0="BarcodeID";
+
+    final static String COL0="ID";
     final static String COL1="Name";
     final static String COL2="Quantity";
     final static String COL3="Price";
@@ -29,7 +30,7 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table "+TABLE_NAME+" ( "+COL0+" TEXT PRIMARY KEY, "+COL1+" TEXT, "+ COL2+" TEXT, "+COL3+" TEXT )");
+        db.execSQL("create table "+TABLE_NAME+" ( "+COL0+" INTEGER PRIMARY KEY AUTOINCREMENT, "+COL1+" TEXT, "+ COL2+" TEXT, "+COL3+" TEXT )");
     }
 
     @Override
@@ -43,7 +44,7 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
         Cursor c=db.rawQuery("select * from "+TABLE_NAME,null);
         boolean check=c.moveToFirst();
         while(check){
-            list.add(new ItemProduct(c.getString(0),c.getString(1),c.getString(3),c.getString(2)));
+            list.add(new ItemProduct(c.getString(1),c.getString(3),c.getString(2)));
             check=c.moveToNext();
         }
         if(!c.isClosed())
@@ -54,7 +55,6 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
     public  boolean updateData(Product product,String quantity,String place){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(COL0,product.getBarcodeid());
         contentValues.put(COL1,product.getName());
         contentValues.put(COL2,quantity);
         String price=product.getSources().get(place);
@@ -70,7 +70,6 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
     public boolean insertData(Product product,String quantity,String place){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(COL0,product.getBarcodeid());
         contentValues.put(COL1,product.getName());
         contentValues.put(COL2,quantity);
         String price=product.getSources().get(place);
@@ -78,8 +77,8 @@ public class AddToCartDatabase extends SQLiteOpenHelper {
         long check=db.insert(TABLE_NAME,null,contentValues);
         return check!=-1;
     }
-    public void deleteData(String  barcode){
+    public void deleteData(int num){
         SQLiteDatabase db=this.getWritableDatabase();
-        db.delete(TABLE_NAME,COL0 + "=" + "'"+barcode+"'",null);
+        db.delete(TABLE_NAME,COL0 + "=" + "'"+num+"'",null);
     }
 }
