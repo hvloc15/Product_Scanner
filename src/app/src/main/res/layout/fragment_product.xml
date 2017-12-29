@@ -200,8 +200,10 @@
             android:layout_alignParentEnd="true"
             android:layout_above="@+id/fab_fb"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/orange"
-            android:tint="@color/white"
+            app:backgroundTint="@color/orange"
+            app:tint="@color/white"
+            app:pressedTranslationZ="9dp"
+            android:visibility="invisible"
             android:src="@drawable/barcode"
             android:layout_marginBottom="15dp"/>
         <android.support.design.widget.FloatingActionButton
@@ -211,22 +213,24 @@
             android:layout_alignParentEnd="true"
             android:layout_above="@+id/fab_edit"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/button_default"
-            android:tint="@color/white"
+            app:backgroundTint="@color/button_default"
+            app:tint="@color/white"
             android:src="@drawable/facebook"
-            android:foregroundTint="@color/button_default"
-            android:layout_marginBottom="15dp"/>
+            app:pressedTranslationZ="9dp"
+            android:layout_marginBottom="15dp"
+            android:visibility="invisible"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_edit"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_above="@+id/fab_main"
-            android:tint="@color/white"
-            android:backgroundTint="@color/lime"
-            android:foregroundTint="@color/lime"
+            app:tint="@color/white"
+            app:backgroundTint="@color/lime"
+            app:pressedTranslationZ="9dp"
             android:src="@drawable/edit_icon"
-            android:layout_marginEnd="20dp"/>
+            android:layout_marginEnd="20dp"
+            android:visibility="invisible"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_main"
@@ -237,9 +241,9 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:src="@drawable/plus_icon"
-            android:tint="@color/white"
+            app:tint="@color/white"
             app:elevation="6dp"
-
+            app:pressedTranslationZ="9dp"
             android:layout_height="50dp"
             android:layout_width="50dp"/>
 

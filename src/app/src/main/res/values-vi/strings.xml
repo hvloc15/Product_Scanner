@@ -39,45 +39,45 @@
     <string name="select_l">Chọn ngôn ngữ</string>
 
 
-    <string name="re_password">Confirm password</string>
-    <string name="cart">Cart</string>
-    <string name="skip">Skip</string>
-    <string name="do_you_want_to_delete">Do you want to delete?</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="product">Product</string>
-    <string name="quantity">Quantity</string>
-    <string name="total">Total:</string>
-    <string name="your_cart">Your cart</string>
-    <string name="back">Back</string>
-    <string name="upload">Uploading</string>
-    <string name="please_wait">Please wait</string>
-    <string name="please_fill_the_blank">Please fill in the blank</string>
-    <string name="please_sign_in">Please sign in</string>
-    <string name="please_choose_image_from_local_folder">Please choose the image from local folder</string>
-    <string name="please_turn_on_the_internet">Please turn on the internet</string>
-    <string name="please_enter_the_quantity">Please enter the quantity</string>
+    <string name="re_password">Xác nhận mật khẩu</string>
+    <string name="cart">Giỏ hàng</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="do_you_want_to_delete">Bạn có muốn xóa?</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="product">Sản phẩm</string>
+    <string name="quantity">Số lượng</string>
+    <string name="total">Tổng cộng:</string>
+    <string name="your_cart">Giỏ hàng của bạn</string>
+    <string name="back">Trở về</string>
+    <string name="upload">Đang tải</string>
+    <string name="please_wait">Xin chờ</string>
+    <string name="please_fill_the_blank">Điền vào chỗ trống</string>
+    <string name="please_sign_in">Xin đăng nhập</string>
+    <string name="please_choose_image_from_local_folder">Xin chọn ảnh trong thư mục gốc</string>
+    <string name="please_turn_on_the_internet">Xin kết nối mạng</string>
+    <string name="please_enter_the_quantity">Xin chọn số lượng</string>
     //Profile
-    <string name="defaultName">Unknow</string>
-    <string name="defaultType">User</string>
-    <string name="submit">Submit</string>
-    <string name="share">Share</string>
+    <string name="defaultName">Không xác định</string>
+    <string name="defaultType">Người dùng</string>
+    <string name="submit">Gửi đi</string>
+    <string name="share">Chia sẻ</string>
     //Spinner
     <string-array name="names">
-        <item>Edit profile</item>
-        <item>Change picture</item>
+        <item>Sửa thông tin người dùng</item>
+        <item>Thay đổi ảnh</item>
     </string-array>
-    <string name="please_choose_the_price">Please choose the price</string>
-    <string name="insert_successfully">Insert successfully</string>
-    <string name="unsuccessful">Unsuccessful</string>
-    <string name="update_sucessful">Update successful</string>
-    <string name="please_enter_a_valid_email">Please enter a valid email.</string>
-    <string name="email_is_required">Email is required.</string>
-    <string name="email_sent">An email has been sent to your email address</string>
-    <string name="password_required">Password is required.</string>
-    <string name="password_length">Password length must be at least 8.</string>
-    <string name="confirm_password_wrong">Confirm password is wrong.</string>
-    <string name="register_success">Register Success.</string>
-    <string name="email_already_registered">This email is already registered.</string>
+    <string name="please_choose_the_price">Xin chọn giá</string>
+    <string name="insert_successfully">Thêm thành công</string>
+    <string name="unsuccessful">Không thành công</string>
+    <string name="update_sucessful">Cập nhật thành công</string>
+    <string name="please_enter_a_valid_email">Xin nhập email hợp lệ.</string>
+    <string name="email_is_required">Cần email.</string>
+    <string name="email_sent">Một email đã được gửi vào tài khoản của bạn</string>
+    <string name="password_required">Cần mật khẩu.</string>
+    <string name="password_length">Mật khẩu cần có ít nhất 8 kí tự.</string>
+    <string name="confirm_password_wrong">Xác nhận mật khẩu sai.</string>
+    <string name="register_success">Đăng kí thành công.</string>
+    <string name="email_already_registered">Email này đã được đăng kí.</string>0
 
 </resources>

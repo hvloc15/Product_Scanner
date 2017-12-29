@@ -66,17 +66,17 @@
     </string-array>
 
 
-    <string name="please_choose_the_price">Please choose the price</string>
-    <string name="insert_successfully">Insert successfully</string>
-    <string name="unsuccessful">Unsuccessful</string>
-    <string name="update_sucessful">Update successful</string>
-    <string name="please_enter_a_valid_email">Please enter a valid email.</string>
-    <string name="email_is_required">Email is required.</string>
-    <string name="email_sent">An email has been sent to your email address</string>
-    <string name="password_required">Password is required.</string>
-    <string name="password_length">Password length must be at least 8.</string>
-    <string name="confirm_password_wrong">Confirm password is wrong.</string>
-    <string name="register_success">Register Success.</string>
-    <string name="email_already_registered">This email is already registered.</string>
+    <string name="please_choose_the_price">Veuillez choisir le prix</string>
+    <string name="insert_successfully">Insertion réussie</string>
+    <string name="unsuccessful">Echec</string>
+    <string name="update_sucessful">Mise à jour réussie</string>
+    <string name="please_enter_a_valid_email">Veuillez entrer une email valide.</string>
+    <string name="email_is_required">Adresse mail requise.</string>
+    <string name="email_sent">Un email a été envoyé à votre adresse.</string>
+    <string name="password_required">Mot de passe requis.</string>
+    <string name="password_length">La longueur minimum du mot de passe est 8.</string>
+    <string name="confirm_password_wrong">La confirmation du mot de passe est fausse.</string>
+    <string name="register_success">Inscription réussie.</string>
+    <string name="email_already_registered">Adresse mail existante.</string>
 
 </resources>

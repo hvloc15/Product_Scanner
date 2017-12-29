@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 
@@ -54,6 +55,7 @@ public class ScreenShootAdapter extends PagerAdapter{
         glide.with(context)
                 .load(url)
                 .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .placeholder(R.drawable.loading)
                         .optionalFitCenter())
                 .into(imageView);

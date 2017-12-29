@@ -67,16 +67,16 @@
     </string-array>
 
 
-    <string name="please_choose_the_price">Please choose the price</string>
-    <string name="insert_successfully">Insert successfully</string>
-    <string name="unsuccessful">Unsuccessful</string>
-    <string name="update_sucessful">Update successful</string>
-    <string name="please_enter_a_valid_email">Please enter a valid email.</string>
-    <string name="email_is_required">Email is required.</string>
-    <string name="email_sent">An email has been sent to your email address</string>
-    <string name="password_required">Password is required.</string>
-    <string name="password_length">Password length must be at least 8.</string>
-    <string name="confirm_password_wrong">Confirm password is wrong.</string>
-    <string name="register_success">Register Success.</string>
-    <string name="email_already_registered">This email is already registered.</string>
+    <string name="please_choose_the_price">Lütfen fiyatı seçin</string>
+    <string name="insert_successfully">Ekleme başarılı</string>
+    <string name="unsuccessful">Başarısız</string>
+    <string name="update_sucessful">Güncelleme başarılı</string>
+    <string name="please_enter_a_valid_email">Lütfen geçerli eposta adresini giriniz.</string>
+    <string name="email_is_required">Email gereklidir.</string>
+    <string name="email_sent">E-posta adresinize bir mesaj gönderildi</string>
+    <string name="password_required">Şifre gereklidir.</string>
+    <string name="password_length">Şifre uzunluğu en az 8 olmalıdır.</string>
+    <string name="confirm_password_wrong">Onay şifresi yanlış.</string>
+    <string name="register_success">Başarılı kayıt.</string>
+    <string name="email_already_registered">Bu e-posta adresi zaten kayıtlı.</string>
 </resources>

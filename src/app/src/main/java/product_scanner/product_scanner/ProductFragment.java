@@ -21,6 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,9 +52,9 @@ public class ProductFragment extends Fragment {
     private AlertDialog alertDialog;
     private String place="";
 
-    private FloatingActionButton fab_plus,fab_fb,fab_scan,fb_edit;
+    private FloatingActionButton fab_plus,fab_fb,fab_scan,fab_edit;
     private Animation fabOpen,fabClose,fabClockwise,fabAntiClockwise;
-
+    private boolean isOpen=false;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_product, container, false);
@@ -75,9 +78,8 @@ public class ProductFragment extends Fragment {
         fabOpen= AnimationUtils.loadAnimation(getContext(),R.anim.fab_open);
         fabClose= AnimationUtils.loadAnimation(getContext(),R.anim.fab_close);
         fabClockwise= AnimationUtils.loadAnimation(getContext(),R.anim.rotate_clockwise);
-        fabOpen= AnimationUtils.loadAnimation(getContext(),R.anim.rotate_anticlockwise);
+        fabAntiClockwise= AnimationUtils.loadAnimation(getContext(),R.anim.rotate_anticlockwise);
     }
-
     private void setOnClick() {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +141,59 @@ public class ProductFragment extends Fragment {
             }
         });
 
+        fab_plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isOpen)
+                {
+                    closeAnimation();
+                    isOpen=false;
+                }
+                else{
+                    openAnimation();
+                    isOpen=true;
+                }
+            }
+        });
 
+        fab_fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((ResideMenu)getActivity()).internet.isOnline()) {
+                    SharePhoto photo = new SharePhoto.Builder()
+                            .setBitmap(screenShootAdapter.getImage())
+                            .build();
+                    SharePhotoContent content = new SharePhotoContent.Builder()
+                            .addPhoto(photo)
+                            .build();
+                    ShareDialog.show(ProductFragment.this, content);
+                }
+                else
+                    Toast.makeText(getContext(),getResources().getString(R.string.please_turn_on_the_internet),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+    private void openAnimation() {
+        fab_plus.startAnimation(fabClockwise);
+        fab_edit.startAnimation(fabOpen);
+        fab_fb.startAnimation(fabOpen);
+        fab_scan.startAnimation(fabOpen);
+        fab_edit.setClickable(true);
+        fab_scan.setClickable(true);
+        fab_fb.setClickable(true);
+
+    }
+    private void closeAnimation() {
+
+
+        fab_scan.startAnimation(fabClose);
+        fab_fb.startAnimation(fabClose);
+        fab_edit.startAnimation(fabClose);
+        fab_plus.startAnimation(fabAntiClockwise);
+        fab_edit.setClickable(false);
+        fab_scan.setClickable(false);
+        fab_fb.setClickable(false);
 
     }
 
@@ -176,7 +230,7 @@ public class ProductFragment extends Fragment {
         fab_fb=v.findViewById(R.id.fab_fb);
         fab_plus=v.findViewById(R.id.fab_main);
         fab_scan=v.findViewById(R.id.fab_scan);
-        fb_edit=v.findViewById(R.id.fab_edit);
+        fab_edit=v.findViewById(R.id.fab_edit);
 
     }
 
