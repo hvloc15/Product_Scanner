@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
@@ -17,6 +18,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
 import com.special.ResideMenu.ResideMenuItem;
 
@@ -48,6 +50,7 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
     private ResideMenuItem itemLanguage;
     private String locale;
     public CheckInternet internet;
+    public ImageView img_avatar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -233,7 +236,11 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
             startActivity(intent);
         }
         else{
-             getFragmentManager().popBackStack();
+
+             FragmentManager fm = getSupportFragmentManager();
+             for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                 fm.popBackStack();
+             }
              if(view == itemProfile)
                  changeFragment(R.id.main_reside_menu,new ProfileFragment());
              else if(view == itemScan){

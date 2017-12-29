@@ -1,6 +1,8 @@
 package product_scanner.product_scanner;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.method.HideReturnsTransformationMethod;
@@ -20,7 +22,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 /**
@@ -70,17 +75,17 @@ public class ProfileFragment extends Fragment {
     private void getUserInfo(){
         user =  MyFirebaseAuth.mAuth.getInstance().getCurrentUser();
         if (user != null) {
-            String name = user.getDisplayName();
+//            String name = user.getDisplayName();
             String email = user.getEmail();
-            String photoUri = user.getPhotoUrl().toString();
+            Uri photoUri = user.getPhotoUrl();
 
-            userName.setText(name);
+
             userEmail.setText(email);
 
             glide.with(this.getContext())
                     .load(photoUri)
-                    .apply(new RequestOptions()
-                            .placeholder(R.drawable.avatar_img)
+                    .apply(RequestOptions.circleCropTransform()
+                            .placeholder(R.drawable.avatar_img).circleCrop()
                             .optionalFitCenter())
                     .into(avatar);
         }
@@ -152,14 +157,39 @@ public class ProfileFragment extends Fragment {
                         //UPDATE FIREBASE
 
 
-                        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                        if(user.updatePassword(password).isSuccessful()){
-                            Toast.makeText(thisView.getContext(), getResources().getString(R.string.password_updated), Toast.LENGTH_SHORT).show();
-                        }else
-                            Toast.makeText(thisView.getContext(), getResources().getString(R.string.error_updating), Toast.LENGTH_SHORT).show();
+                        MyFirebaseAuth.mUser = FirebaseAuth.getInstance().getCurrentUser();
+                        if(password.length() < 8){
+                            editTextPassword.setError(getString(R.string.password_length));
+                            editTextPassword.requestFocus();
+                            return;
+                        } else {
+
+                            user.updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(thisView.getContext(), "Password updated", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                            Toast.makeText(thisView.getContext(), "Error auth failed", Toast.LENGTH_SHORT).show();
+
+                                        } else {
+                                            Toast.makeText(thisView.getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            });
+                        }
+
+
+
+//                        if(user.updatePassword(password).isSuccessful()){
+//                            Toast.makeText(thisView.getContext(), "Password updated", Toast.LENGTH_SHORT).show();
+//                        }else
+//                            Toast.makeText(thisView.getContext(), "Error auth failed", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(view.getContext(), getResources().getString(R.string.confirm_password_wrong), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "Confirm password is wrong", Toast.LENGTH_SHORT).show();
                     }
                 }
 

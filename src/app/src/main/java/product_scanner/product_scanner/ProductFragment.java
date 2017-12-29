@@ -15,6 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -165,6 +166,18 @@ public class ProductFragment extends Fragment {
                             .addPhoto(photo)
                             .build();
                     ShareDialog.show(ProductFragment.this, content);
+                }
+                else
+                    Toast.makeText(getContext(),getResources().getString(R.string.please_turn_on_the_internet),Toast.LENGTH_SHORT).show();
+            }
+        });
+        fab_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if( ((ResideMenu)getActivity()).internet.isOnline()) {
+                    ImageView img= viewPager.findViewById(R.id.slider_image);
+                    ((ResideMenu) getActivity()).img_avatar=img;
+                    ((ResideMenu) getActivity()).changeFragmentNavigate(R.id.main_reside_menu, new EditFragment());
                 }
                 else
                     Toast.makeText(getContext(),getResources().getString(R.string.please_turn_on_the_internet),Toast.LENGTH_SHORT).show();

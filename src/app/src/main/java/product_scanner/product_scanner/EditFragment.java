@@ -36,39 +36,48 @@ import java.io.FileNotFoundException;
  * Created by Nguyen Khang on 12/7/2017.
  */
 
-public class AddFragment extends Fragment {
+public class EditFragment extends Fragment {
     private EditText price,name,barcode;
     private ImageView imageView;
     private Bitmap img;
-   private Button next,pickimage;
+    private Button next,pickimage;
     private Spinner spinner;
     private ArrayAdapter<CharSequence> adapter;
     private final int CAMERA_REQUEST=101,PICK_IMAGE=102;
     private ProgressDialog progressDialog;
+    private Product product;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_insert, container, false);
+        View v = inflater.inflate(R.layout.fragment_edit, container, false);
         findView(v);
         setUpSpinner();
         setOnClick();
-        if( !((ResideMenu)getActivity()).barcodeid.equals(""))
-            this.barcode.setText(((ResideMenu)getActivity()).barcodeid);
+            product=MyFirebaseDatabase.listproduct.get(((ResideMenu)getActivity()).barcodeid);
+            setText();
 
-    v.setOnTouchListener(new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if(motionEvent.getAction()== MotionEvent.ACTION_DOWN){
-                ((ResideMenu)getActivity()).hidekeyboard(view);
+
+
+        v.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction()== MotionEvent.ACTION_DOWN){
+                    ((ResideMenu)getActivity()).hidekeyboard(view);
+                }
+                return true;
+
             }
-            return true;
-
-        }
-    });
+        });
 
         return v;
 
     }
+
+    private void setText() {
+        this.barcode.setText(((ResideMenu) getActivity()).barcodeid);
+        this.name.setText(product.getName());
+    }
+
     private void setUpProgressDialog(String title,String mes){
         progressDialog=new ProgressDialog(getContext());
         progressDialog.setTitle(title);
@@ -78,53 +87,16 @@ public class AddFragment extends Fragment {
     }
 
     private void setOnClick() {
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    return ;
-                }
-                Intent i= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(i,CAMERA_REQUEST);
-            }
-        });
-        pickimage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
-            }
-        });
+
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(isFilled()) {
                     if (((ResideMenu) getActivity()).internet.isOnline()) {
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        img.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                        byte[] data = baos.toByteArray();
-                        StorageReference ref = MyFirebaseStorage.storageRef.child(((ResideMenu) getActivity()).barcodeid + ".jpg");
                         setUpProgressDialog(getResources().getString(R.string.upload), getResources().getString(R.string.please_wait) + "...");
-                        UploadTask uploadTask = ref.putBytes(data);
-                        uploadTask.addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                // Handle unsuccessful uploads
-                                progressDialog.dismiss();
-                                Toast.makeText(getContext(), getResources().getString(R.string.please_sign_in), Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-
-                                Product product=new Product(name.getText().toString(), barcode.getText().toString(),downloadUrl.toString(),spinner.getSelectedItem().toString(),price.getText().toString());
-                                MyFirebaseDatabase.uploadData(progressDialog, getContext(),product);
-                            }
-                        });
+                                product.sources.put(spinner.getSelectedItem().toString(), price.getText().toString());
+                                MyFirebaseDatabase.uploadData(progressDialog, getContext(), product);
                     }
                     else
                         Toast.makeText(getContext(),getResources().getString(R.string.please_turn_on_the_internet),Toast.LENGTH_SHORT).show();
@@ -147,11 +119,9 @@ public class AddFragment extends Fragment {
         name=v.findViewById(R.id.input_name);
         barcode=v.findViewById(R.id.input_id);
         spinner=v.findViewById(R.id.spinner_place);
-        imageView=v.findViewById(R.id.image);
-         next=v.findViewById(R.id.btn_next);
-        pickimage=v.findViewById(R.id.btn_getImage);
-          img= BitmapFactory.decodeResource(getResources(),R.drawable.loading);
-          imageView.setImageBitmap(img);
+        next=v.findViewById(R.id.btn_next);
+
+
     }
     private void setUpSpinner(){
         adapter = ArrayAdapter.createFromResource(getContext(),
@@ -171,7 +141,7 @@ public class AddFragment extends Fragment {
                 }
                 case PICK_IMAGE:{
 
-                         Uri selectedImage = data.getData();
+                    Uri selectedImage = data.getData();
 
                     try {
                         img = decodeUri(selectedImage);

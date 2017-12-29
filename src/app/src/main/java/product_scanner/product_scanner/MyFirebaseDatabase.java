@@ -30,12 +30,12 @@ public class MyFirebaseDatabase  {
 
 
     }
-    public static void uploadData(final ProgressDialog progressDialog,final Context context, final String name, final String barcode, final String price, final String place, final String url){
+    public static void uploadData(final ProgressDialog progressDialog,final Context context,final Product product ){
         mDatabase.child("Product").runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
-                String key=barcode;
-                Product product=new Product(name,barcode,url,place,price);
+                String key=product.getBarcodeid();
+
                       mutableData.child(key).setValue(product);
                 return Transaction.success(mutableData);
             }
