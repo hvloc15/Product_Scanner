@@ -19,10 +19,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -49,36 +45,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         findView();
         setOnClickItem();
         denyCopyPassword();
-        facebook();
-
-
     }
 
-    private void facebook(){
-        /*AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        if (accessToken != null) {
-            startActivity(new Intent(SignInActivity.this, ResideMenu.class));
-        }*/
-        callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        startActivity(new Intent(SignInActivity.this, ResideMenu.class));
-                    }
 
-                    @Override
-                    public void onCancel() {
-                        // App code
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        // App code
-                    }
-                });
-
-    }
     private void denyCopyPassword() {
         passwordEditText.setLongClickable(false); //deny copy password to clipboard
     }
@@ -181,8 +150,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
-                if(!MyFirebaseAuth.isLogging())
-                    Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
+                if(!MyFirebaseAuth.isLogging()) {
+                    String str= task.getException().getMessage();
+                    if (str.equals("There is no user record corresponding to this identifier. The user may have been deleted.")){
+                        Toast.makeText(getApplicationContext(),getString(R.string.toast_no_email), Toast.LENGTH_SHORT).show();
+                    }
+                    else if (str.equals("The password is invalid or the user does not have a password.")){
+                        Toast.makeText(getApplicationContext(), getString(R.string.toast_wrong_password), Toast.LENGTH_SHORT).show();
+                    }
+                    else{Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();}
+
+                }
                 else
                     finish();
             }

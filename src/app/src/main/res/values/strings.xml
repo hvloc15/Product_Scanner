@@ -78,4 +78,7 @@
         <item>Change picture</item>
     </string-array>
 
+    <string name="toast_no_email">There is no registered user corresponding to this email.</string>
+    <string name="toast_wrong_password">The password is invalid.</string>
+
 </resources>

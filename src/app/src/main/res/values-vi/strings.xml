@@ -78,6 +78,8 @@
     <string name="password_length">Mật khẩu cần có ít nhất 8 kí tự.</string>
     <string name="confirm_password_wrong">Xác nhận mật khẩu sai.</string>
     <string name="register_success">Đăng kí thành công.</string>
-    <string name="email_already_registered">Email này đã được đăng kí.</string>0
+    <string name="email_already_registered">Email này đã được đăng kí.</string>
+    <string name="toast_no_email">Không có người dùng đã đăng ký tương ứng với email này.</string>
+    <string name="toast_wrong_password">Mật khẩu không hợp lệ.</string>
 
 </resources>
