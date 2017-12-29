@@ -113,7 +113,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:layout_marginStart="10sp"
-                                    android:text="Quantity:"
+                                    android:text="@string/quantity"
                                     android:textColor="#fff"
                                     android:textSize="20sp"
                                     android:textStyle="normal" />
@@ -164,29 +164,6 @@
 
                     </RelativeLayout>
 
-                    <RelativeLayout
-                        android:id="@+id/relativeLayout3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/relativeLayout2"
-                        android:layout_margin="18sp">
-
-                        <Button
-                            android:layout_marginStart="20dp"
-                            android:drawableStart="@drawable/fb_icon"
-                            android:layout_width="120dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/fbbtn_background"
-                            android:text="@string/share"
-                            android:textColor="#FFFFFF"
-                            android:id="@+id/fb_share"
-                            android:layout_below="@id/code_info"
-                                      />
-
-
-                    </RelativeLayout>
-
 
                 </RelativeLayout>
 
@@ -205,6 +182,7 @@
             app:pressedTranslationZ="9dp"
             android:visibility="invisible"
             android:src="@drawable/barcode"
+            app:fabSize="mini"
             android:layout_marginBottom="15dp"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_fb"
@@ -217,6 +195,7 @@
             app:tint="@color/white"
             android:src="@drawable/facebook"
             app:pressedTranslationZ="9dp"
+            app:fabSize="mini"
             android:layout_marginBottom="15dp"
             android:visibility="invisible"/>
         <android.support.design.widget.FloatingActionButton
@@ -228,25 +207,25 @@
             app:tint="@color/white"
             app:backgroundTint="@color/lime"
             app:pressedTranslationZ="9dp"
+            app:fabSize="mini"
             android:src="@drawable/edit_icon"
+            android:layout_marginBottom="15dp"
             android:layout_marginEnd="20dp"
             android:visibility="invisible"/>
-
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_main"
-            app:fabSize="normal"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/plus_icon"
-            app:tint="@color/white"
-            app:elevation="6dp"
-            app:pressedTranslationZ="9dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_width="50dp"/>
+           android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/plus_icon"
+            android:layout_marginEnd="15dp"
 
+            app:elevation="6dp"
+            app:fabSize="normal"
+            app:pressedTranslationZ="9dp"
+            app:tint="@color/white" />
 
     </RelativeLayout>
 

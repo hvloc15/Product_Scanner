@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -232,7 +233,7 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
             startActivity(intent);
         }
         else{
-
+             getFragmentManager().popBackStack();
              if(view == itemProfile)
                  changeFragment(R.id.main_reside_menu,new ProfileFragment());
              else if(view == itemScan){
@@ -261,7 +262,15 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
 
     }
 
-
+    public void changeFragmentNavigate(int fragment,Fragment targetFragment){
+        resideMenu.clearIgnoredViewList();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(fragment, targetFragment, "fragment")
+                .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+    }
     public void changeFragment(int fragment,Fragment targetFragment){
         resideMenu.clearIgnoredViewList();
         getSupportFragmentManager()
@@ -277,14 +286,22 @@ public class ResideMenu extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if(!isOpen)
-            resideMenu.openMenu(com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
-        else
-            super.onBackPressed();
-
+    private boolean isStackFragmentEmpty(){
+        return getFragmentManager().getBackStackEntryCount()==0;
     }
+    /*@Override
+    public void onBackPressed() {
+        if(isStackFragmentEmpty()) {
+            if (!isOpen)
+                resideMenu.openMenu(com.special.ResideMenu.ResideMenu.DIRECTION_LEFT);
+            else
+                super.onBackPressed();
+        }
+        else{
+            getFragmentManager().popBackStack();
+        }
+
+    }*/
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
         Resources res = getResources();

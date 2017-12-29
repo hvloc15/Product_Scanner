@@ -72,13 +72,14 @@
     <string name="defaultType">User</string>
     <string name="submit">Submit</string>
     <string name="share">Share</string>
-    //Spinner
-    <string-array name="names">
-        <item>Edit profile</item>
-        <item>Change picture</item>
-    </string-array>
+
+    <string name="changePass">Change password</string>
 
     <string name="toast_no_email">There is no registered user corresponding to this email.</string>
     <string name="toast_wrong_password">The password is invalid.</string>
-
+    <string name="barcode">Barcode</string>
+    <string name="search">Search...</string>
+    <string name="swipe_from_left_to_right_to_open_menu">Swipe from left to right to open menu</string>
+    <string name="password_updated">Password updated</string>
+  <string name="error_updating">Error updating</string>
 </resources>

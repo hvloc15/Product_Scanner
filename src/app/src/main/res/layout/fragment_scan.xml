@@ -1,35 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/fragment_scan"
-    android:background="@color/white">
+xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/fragment_scan"
+android:background="@color/white" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/code_info"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        android:text="@string/nothing_to_read"
-        />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/name"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        android:text="Product"
-        android:layout_below="@id/code_info"
-        />
+<TextView
+    android:id="@+id/search_barcode"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:paddingStart="10dp"
+    android:background="@color/blue1"
+    android:drawableEnd="@android:drawable/ic_menu_search"
+    android:paddingEnd="15dp"
+    android:gravity="center_vertical"
+    android:textSize="20sp"
+    android:text="@string/barcode"
+    android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/btn_clickscan"
+
+
+    <FrameLayout
+        android:id="@+id/main_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/scan_barcode"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/ignored_view"
+            android:gravity="center">
+
+            <TextView
+                android:layout_marginTop="-30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Scanner"
+                android:id="@+id/Product_Scanner" android:layout_gravity="center" android:clickable="false"
+                android:textColor="#000000" android:textSize="30sp" android:padding="5dp"/>
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="60dp"
+                android:layout_height="120dp"
+                android:scaleType="fitCenter"
+                android:id="@+id/imageView"
+                android:layout_gravity="center"
+                android:src="@drawable/gesture"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/swipe_from_left_to_right_to_open_menu"
+                android:id="@+id/textView" android:layout_gravity="center" android:clickable="false"
+                android:textColor="#ffacacac" android:textSize="17sp" android:padding="5dp"/>
+            <Button
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_login"
+                android:textColor="@android:color/white"
+                android:text="@string/scan"
+                android:textSize="17sp"
+                android:padding="12dp"
+                android:id="@+id/btn_clickscan"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"/>
+
+        </LinearLayout>
+
+
+
+    </FrameLayout>
 
 
 </RelativeLayout>

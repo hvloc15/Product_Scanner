@@ -12,16 +12,6 @@
                 android:layout_height="180sp"
                 android:background="#9999">
 
-                <Spinner
-                    android:id="@+id/spinner_menu"
-                    android:layout_width="25sp"
-                    android:layout_height="25sp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/settings" />
-
             </RelativeLayout>
 
             <LinearLayout
@@ -104,41 +94,78 @@
                         android:layout_marginBottom="15sp"/>
 
 
+                <LinearLayout
+                    android:id="@+id/linearLayout_password2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
                     <EditText
-                        android:id="@+id/phone"
+                        android:id="@+id/editText_password2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:ems="10"
                         android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/ic_lock_white_24dp"
+                        android:drawableTint="@color/white"
+                        android:ems="10"
                         android:drawablePadding="12dp"
-                        android:padding="8dp"
-                        android:textColor="#000"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
                         android:maxLines="1"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/white"
-                        android:drawableLeft="@drawable/ic_phone_white_24dp"
-                        android:text=""/>
+                        android:paddingRight="35dp"/>
+                    <ImageButton
+                        android:id="@+id/imageButton_passwordReveal3"
+                        android:src="@drawable/eye"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-30dp"
+                        android:background="@null"
+                        android:tint="@color/white"
+                        />
+                </LinearLayout>
                     <View
+                        android:id="@+id/password_line1"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="#00b6d6"
                         android:layout_marginBottom="15sp"/>
 
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_re_password2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
                     <EditText
-                        android:id="@+id/address"
+                        android:id="@+id/editText_re_password2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:ems="10"
                         android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/ic_lock_white_24dp"
+                        android:drawableTint="@color/white"
+                        android:ems="10"
                         android:drawablePadding="12dp"
-                        android:padding="8dp"
-                        android:textColor="#000"
+                        android:hint="@string/re_password"
+                        android:inputType="textPassword"
                         android:maxLines="1"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/white"
-                        android:drawableLeft="@drawable/ic_email_white_24dp"
-                        android:text=""/>
+                        android:paddingRight="35dp"/>
+                    <ImageButton
+                        android:id="@+id/imageButton_passwordReveal4"
+                        android:src="@drawable/eye"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-30dp"
+                        android:background="@null"
+                        android:tint="@color/white"
+                        />
+                </LinearLayout>
                     <View
+                        android:id="@+id/password_line2"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="#00b6d6"
@@ -146,12 +173,12 @@
 
 
                     <Button
-                        android:id="@+id/button_submit"
-                        android:layout_width="150sp"
+                        android:id="@+id/button_change_pass"
+                        android:layout_width="200sp"
                         android:layout_height="50sp"
                         android:textAllCaps="true"
                         android:padding="15dp"
-                        android:text="@string/submit"
+                        android:text="@string/changePass"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/background_login"

@@ -41,8 +41,6 @@ public class ProductFragment extends Fragment {
 
     private LinearLayout linearLayout;
 
-    private Button shareB;
-
     private TextView name;
     private Button priceButton;
     private Product product;
@@ -225,7 +223,6 @@ public class ProductFragment extends Fragment {
         add=v.findViewById(R.id.button_add_to_cart);
         quantity=v.findViewById(R.id.editView_quantity);
         linearLayout=v.findViewById(R.id.main_view_product);
-        shareB=v.findViewById(R.id.fb_share);
 
         fab_fb=v.findViewById(R.id.fab_fb);
         fab_plus=v.findViewById(R.id.fab_main);

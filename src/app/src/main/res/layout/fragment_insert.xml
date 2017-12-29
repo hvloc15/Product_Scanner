@@ -53,7 +53,7 @@
 
     <EditText
         android:id="@+id/input_id"
-        android:drawableEnd="@drawable/barcode"
+        android:drawableEnd="@drawable/barcode_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text" />
@@ -97,8 +97,7 @@
     android:layout_width="100dp"
     android:layout_height="100dp"
     android:layout_centerHorizontal="true"
-
-
+    android:src="@drawable/loading"
     android:layout_marginTop="10dp"/>
 
 <Button

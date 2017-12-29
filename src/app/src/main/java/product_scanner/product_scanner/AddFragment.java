@@ -148,7 +148,7 @@ public class AddFragment extends Fragment {
         imageView=v.findViewById(R.id.image);
          next=v.findViewById(R.id.btn_next);
         pickimage=v.findViewById(R.id.btn_getImage);
-          img= BitmapFactory.decodeResource(getResources(),R.drawable.product_icon);
+          img= BitmapFactory.decodeResource(getResources(),R.drawable.loading);
           imageView.setImageBitmap(img);
     }
     private void setUpSpinner(){
